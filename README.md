@@ -1,1 +1,1 @@
-# ClashofIn-tech
+# ClashofIntech
