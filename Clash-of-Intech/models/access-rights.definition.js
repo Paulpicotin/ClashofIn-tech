@@ -1,33 +1,41 @@
 /** eslint camelcase: 0 */
 const accessRightsDefinition = {
-  exercise: {
-    view: 'exercise.view',
-    do: 'exercise.do'
+  admin: {
+    create: 'admin.create',
+    delete: 'admin.delete',
+    edit: 'admin.edit'
   },
-  session: {
-    view: 'session.view',
-    do: 'session.do'
+  characters: {
+      create: 'characters.create',
+      delete: 'characters.delete',
+      edit: 'characters.edit',
+      view: 'characters.view'
   },
-  module: {
-    create: 'module.create',
-    delete: 'module.delete',
-    edit_admin: 'module.edit_admin',
-    edit: 'module.edit',
-    participate: 'module.participate',
-    view: 'module.view'
+  player: {
+    create: 'player.create',
+    delete: 'player.delete',
+    edit: 'player.edit'
   },
-  exercise_attempt: {
-    delete: 'exercise_attempt.delete'
+  town: {
+    view: 'town.view',
+    manage: 'town.manage',
+    create: 'town.create',
+    delete: 'town.delete',
+    edit: 'town.edit'
   },
-  user: {
-    view: 'user.view',
-    manage: 'user.manage',
-    see_dashboard: 'user.see_dashboard'
+  building: {
+    view:'building.view',
+    create:'building.create',
+    delete:'building.delete',
+    edit:'building.edit',
+    manage:'building.manage'
   },
-  role: {
-    manage: 'role.manage',
-    add_to_user: 'role.add_to_user'
+  case: {
+    view: 'case.view',
+    edit: 'case.edit',
+    create: 'case.create',
+    delete: 'case.delete'  
   }
 };
 
-module.exports = accessRightsDefinition;
+bdd.exports = accessRightsDefinition;

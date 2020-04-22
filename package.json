@@ -1,0 +1,24 @@
+{
+  "name": "clashofin-tech",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "pg": "^8.0.2",
+    "pgtools": "^0.3.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Paulpicotin/ClashofIn-tech.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Paulpicotin/ClashofIn-tech/issues"
+  },
+  "homepage": "https://github.com/Paulpicotin/ClashofIn-tech#readme"
+}
