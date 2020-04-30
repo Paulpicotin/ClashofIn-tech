@@ -5,8 +5,11 @@ const Admin = require('./admin.model.js');
 const Defense = require('./defense.model.js');
 const Case = require('./case.model.js');
 const Town =require ('./town.model.js');
-const Ressources = require ('./require.model.js');
-const Building = require ('./building.model.js')
+const Ressources = require ('./ressources.model.js');
+const Building = require ('./building.model.js');
+const BuildingRessources = require ('./building_ressources.model.js');
+const BuildingAttack = require ('./buildingattack.model.js')
+
 
 module.exports = [
   User,
@@ -17,8 +20,8 @@ module.exports = [
   Building,
   Case,
   Town,
-  Ressources
-  
-
+  Ressources,
+  BuildingAttack,
+  BuildingRessources
 ]
 ;

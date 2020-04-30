@@ -21,20 +21,6 @@ class Ressources {
         )`
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /** @type {String} */
 Ressources.tableName = 'ressources'
 
