@@ -1,4 +1,4 @@
-const PostgresStore = require('../../utils/PostgresStore.js')
+const PostgresStore = require('../../utils/COI.js')
 const PlatformRole = require ('../platform-role.model.js')
 const RoleAccessRight = require('../role-access-right.model.js')
 

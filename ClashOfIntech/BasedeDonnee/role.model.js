@@ -1,5 +1,5 @@
 /* eslint camelcase: 0 */
-const PostgresStore = require('../utils/PostgresStore.js')
+const COI = require('../utils/COI.js')
 const debug = require('debug')('hephaistos:role.model.js')
 
 class Role {
@@ -17,10 +17,10 @@ class Role {
    */
   static async getAllWithAccessRights () {
     const RoleAccessRight = require('./role-access-right.model.js')
-    const { rows: roles } = await PostgresStore.client.query({
+    const { rows: roles } = await COI.client.query({
       text: `SELECT * FROM ${Role.tableName}`
     })
-    const { rows: accessRights } = await PostgresStore.client.query({
+    const { rows: accessRights } = await COI.client.query({
       text: `SELECT * FROM ${RoleAccessRight.tableName}`
     })
     roles.forEach(r => {
@@ -33,7 +33,7 @@ class Role {
    * @returns {Promise<Role[]>}
    */
   static async getAll () {
-    const result = await PostgresStore.client.query({
+    const result = await COI.client.query({
       text: `SELECT * FROM ${Role.tableName} ORDER BY id`
     })
     return result.rows
@@ -43,7 +43,7 @@ class Role {
     * @param {Number} id
     * @param {String} name */
   static async update (id, name) {
-    await PostgresStore.client.query({
+    await COI.client.query({
       text: `UPDATE ${Role.tableName} SET name = $2 WHERE id=$1`,
       values: [id, name]
     })
@@ -61,7 +61,7 @@ class Role {
     const values = fields.map(_ => params[_])
     const fieldNames = fields.join(',')
 
-    const result = await PostgresStore.client.query({
+    const result = await COI.client.query({
       text: `INSERT INTO ${Role.tableName} (${fieldNames}) VALUES (${variables})
         RETURNING *`,
       values
@@ -82,7 +82,7 @@ class Role {
     /*await ModuleUserRole.deleteAllForRole(id)*/
     await RoleAccessRight.removeAllForRole(id)
 
-    await PostgresStore.client.query({
+    await COI.client.query({
       text: `DELETE FROM ${Role.tableName} WHERE id=$1`,
       values: [id]
     })

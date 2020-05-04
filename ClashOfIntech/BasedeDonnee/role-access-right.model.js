@@ -1,5 +1,5 @@
 /* eslint camelcase: 0 */
-const PostgresStore = require('../utils/PostgresStore.js')
+const COI = require('../utils/COI.js')
 // const debug = require('debug')('hephaistos:role-access-right.model.js')
 const Role = require('./role.model.js')
 
@@ -14,7 +14,7 @@ class RoleAccessRight {
    * @returns {Promise<RoleAccessRight[]>}
    */
   static async getByRoleId (roleId) {
-    const result = await PostgresStore.client.query({
+    const result = await COI.client.query({
       text: `SELECT access_right FROM ${RoleAccessRight.tableName}
       WHERE role_id = $1`,
       values: [roleId]
@@ -26,7 +26,7 @@ class RoleAccessRight {
    * @param {Number} roleId
    */
   static async removeAllForRole (roleId) {
-    return PostgresStore.client.query({
+    return COI.client.query({
       text: `DELETE FROM ${RoleAccessRight.tableName} 
         WHERE role_id=$1`,
       values: [roleId]
@@ -38,7 +38,7 @@ class RoleAccessRight {
    * @param {String} accessRight
    */
   static async remove (roleId, accessRight) {
-    return PostgresStore.client.query({
+    return COI.client.query({
       text: `DELETE FROM ${RoleAccessRight.tableName} 
         WHERE role_id=$1 AND access_right=$2`,
       values: [roleId, accessRight]
@@ -50,7 +50,7 @@ class RoleAccessRight {
    * @param {String} accessRight
    */
   static async add (roleId, accessRight) {
-    return PostgresStore.client.query({
+    return COI.client.query({
       text: `INSERT INTO ${RoleAccessRight.tableName} 
         (role_id, access_right) VALUES ($1, $2)
         ON CONFLICT (role_id, access_right)

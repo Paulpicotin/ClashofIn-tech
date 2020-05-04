@@ -1,4 +1,4 @@
-const PostgresStore = require('../utils/PostgresStore.js')
+const COI = require('../utils/COI.js')
 
 
 class Ressources {

@@ -1,5 +1,5 @@
 /* eslint camelcase: 0 */
-const PostgresStore = require('../utils/PostgresStore.js')
+const COI = require('../utils/COI.js')
 // const debug = require('debug')('hephaistos:platform-role.model.js')
 const RoleAccessRight = require('./role-access-right.model.js')
 const Role = require('./role.model.js')
@@ -19,7 +19,7 @@ class PlatformRole {
    * @param {Number} roleId
    */
   static async deleteAllForRole (roleId) {
-    await PostgresStore.client.query({
+    await COI.client.query({
       text: `DELETE FROM ${PlatformRole.tableName} WHERE role_id=$1`,
       values: [roleId]
     })
@@ -29,7 +29,7 @@ class PlatformRole {
    * @param {Number} userId
    */
   static async deleteAllForUser (userId) {
-    await PostgresStore.client.query({
+    await COI.client.query({
       text: `DELETE FROM ${PlatformRole.tableName} WHERE user_id=$1`,
       values: [userId]
     })
@@ -40,7 +40,7 @@ class PlatformRole {
    * @return {Promise<{ id: Number, name: String }>}
    */
   static async getUserRole (user) {
-    const result = await PostgresStore.client.query({
+    const result = await COI.client.query({
       text: `SELECT role.id as id, role.name as name FROM ${Role.tableName} as role
         LEFT JOIN ${PlatformRole.tableName} AS pr
           ON pr.role_id = role.id
@@ -57,7 +57,7 @@ class PlatformRole {
    * @returns {Promise<Boolean>}
    */
   static async hasAccessRight (user, right) {
-    const result = await PostgresStore.client.query({
+    const result = await COI.client.query({
       text: `SELECT 1 FROM ${PlatformRole.tableName} AS r
         LEFT JOIN ${RoleAccessRight.tableName} AS ar ON r.role_id=ar.role_id
       WHERE r.user_id=$1
@@ -72,7 +72,7 @@ class PlatformRole {
    * @param {Number} userId
    */
   static async remove (userId) {
-    await PostgresStore.client.query({
+    await COI.client.query({
       text: `DELETE FROM ${PlatformRole.tableName} 
         WHERE user_id=$1`,
       values: [userId]
@@ -84,7 +84,7 @@ class PlatformRole {
    * @param {Number} roleId
    */
   static async add (userId, roleId) {
-    await PostgresStore.client.query({
+    await COI.client.query({
       text: `INSERT INTO ${PlatformRole.tableName} 
         (user_id, role_id) VALUES ($1, $2)
         ON CONFLICT (user_id, role_id)
@@ -110,8 +110,8 @@ class PlatformRole {
     const User = require('./user.model.js')
     const roles = await Role.getAll()
     const adminRole = roles.find(r => r.name === 'ADMIN')
-    const user = await User.getByEmail(config.ADMIN_EMAIL, ['id'])
-    await PlatformRole.add(user.id, adminRole.id)
+    //const user = await User.getByEmail(config.ADMIN_EMAIL, ['id'])
+    //await PlatformRole.add(user.id, adminRole.id)
   }
 }
 
