@@ -1,2 +1,2 @@
-const PostgresStore = require('./PostgresStore.js')
-PostgresStore.reset()
+const COI = require('./COI.js')
+COI.reset()
