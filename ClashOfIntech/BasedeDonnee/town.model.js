@@ -12,7 +12,9 @@ class Town{
     /** @type {String} */
     townname
     
-
+   async getbyUserId(id_player){
+    
+    }
     
   static toSqlTable () {
     return `
@@ -23,7 +25,9 @@ class Town{
         width INT,
         townname TEXT
     )`
+    
   }
+  
 }
 /** @type {String} */
 Town.tableName = 'town'

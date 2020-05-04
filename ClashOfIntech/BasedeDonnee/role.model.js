@@ -75,11 +75,11 @@ class Role {
    */
   static async delete (id) {
     const PlatformRole = require('./platform-role.model.js')
-    const ModuleUserRole = require('./module-user-role.model.js')
+    /*const ModuleUserRole = require('./module-user-role.model.js')*/
     const RoleAccessRight = require('./role-access-right.model.js')
 
     await PlatformRole.deleteAllForRole(id)
-    await ModuleUserRole.deleteAllForRole(id)
+    /*await ModuleUserRole.deleteAllForRole(id)*/
     await RoleAccessRight.removeAllForRole(id)
 
     await PostgresStore.client.query({
@@ -97,7 +97,7 @@ class Role {
     )`
   }
 
-  static async initScript () {
+  /*static async initScript () {
     const RoleAccessRight = require('./role-access-right.model.js')
     const accessRight = require('./access-rights.definition.js')
     const {
@@ -156,7 +156,7 @@ class Role {
       RETURNING *`,
       values: [studentRole.id, ...studentRights]
     })
-  }
+  }*/
 }
 
 /** @type {String} */
