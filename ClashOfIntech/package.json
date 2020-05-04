@@ -6,10 +6,9 @@
     "start": "node ./bin/www",
     "reset": "node ./utils/init.js"
   },
-  
-  "Standard":{
-    "env":{
-      "mocha":true
+  "Standard": {
+    "env": {
+      "mocha": true
     }
   },
   "dependencies": {
