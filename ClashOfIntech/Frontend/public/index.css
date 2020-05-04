@@ -1,0 +1,40 @@
+body {
+  font-family: "Roboto", sans-serif;
+}
+
+/* 
+    Headers font style
+*/
+h1,
+h2 {
+  font-family: "Courgette", cursive;
+}
+
+/* 
+    Headers colors
+*/
+h1 {
+  color: orange;
+}
+
+h2 {
+  color: blue;
+}
+
+/* 
+    Table style
+*/
+table,
+th,
+td {
+  border: 1px solid black;
+}
+table {
+  border-spacing: 5px;
+}
+td {
+  padding: 5px;
+}
+th {
+  font-family: "Courgette", cursive;
+}

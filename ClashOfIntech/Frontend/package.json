@@ -5,7 +5,8 @@
   "main": "index.js",
   "dependencies": {
     "pg": "^8.0.2",
-    "pgtools": "^0.3.0"
+    "pgtools": "^0.3.0",
+    "vue": "^2.6.11"
   },
   "devDependencies": {},
   "scripts": {
