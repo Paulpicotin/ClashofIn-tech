@@ -1,25 +1,46 @@
 {
-  "name": "clashofin-tech",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "fronted_exam",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint"
+  },
   "dependencies": {
-    "pg": "^8.0.2",
-    "pgtools": "^0.3.0",
+    "babel": "^6.23.0",
+    "core-js": "^3.6.4",
     "vue": "^2.6.11"
   },
-  "devDependencies": {},
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^4.2.0",
+    "@vue/cli-plugin-eslint": "^4.2.0",
+    "@vue/cli-service": "^4.2.0",
+    "babel-eslint": "^10.0.3",
+    "eslint": "^6.7.2",
+    "eslint-plugin-vue": "^6.1.2",
+    "vue-template-compiler": "^2.6.11"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Paulpicotin/ClashofIn-tech.git"
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "rules": {}
   },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ],
+  "description": "## Project setup ``` npm install ```",
+  "main": "babel.config.js",
   "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Paulpicotin/ClashofIn-tech/issues"
-  },
-  "homepage": "https://github.com/Paulpicotin/ClashofIn-tech#readme"
+  "license": "ISC"
 }

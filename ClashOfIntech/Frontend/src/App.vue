@@ -1,15 +1,15 @@
 <template>
   <div id="app">
     <h1>CLASH OF INTECH</h1>
-    <FormCOI v-on:addList="addList" :editMode="false" />
+    <FormCOI v-on:addinscription="addinscription" :editMode="false" />
     <COITable
-      :ListCOI="ListCOI"
-      v-on:editList="infosCOIListToEdit"
-      v-on:deleteList="deleteList"
+      :inscriptionCOI="inscriptionCOI"
+      v-on:editinscription="infoscoiinscriptionToEdit"
+      v-on:deleteinscription="deleteinscription"
     />
     <FormCOI
-      v-on:editList="editList"
-      :ListtoEdit="ListtoEdit"
+      v-on:editinscription="editinscription"
+      :inscriptiontoEdit="inscriptiontoEdit"
       :editMode="true"
     />
   </div>
@@ -19,64 +19,50 @@
 import FormCOI from "./components/FormCOI.vue";
 //import COITable from "./components/COITable.vue";
 import {
-  getList,
-  addList,
-  editList,
-  //deleteList
-} from "./services/COILIST.js";
+  getinscription,
+  addinscription,  
+  //deleteinscription
+} from "./services/COIinscription.js";
 export default {
   name: "App",
   components: {
     FormCOI,
-    COITable
+    //COITable
   },
   data() {
     return {
-      ListCOI: [],
-      ListtoEdit: null
+      inscriptionCOI: [],
+      inscriptiontoEdit: null
     };
   },
   async created() {
-    const ListCOI = await getList();
-    this.ListCOI = [...ListCOI];
+    const inscriptionCOI = await getinscription();
+    this.inscriptionCOI = [...inscriptionCOI];
   },
   methods: {
     randomKey() {
       return Math.random();
     },
-    addList({ fullName,  tasks }) {
-      addList({ fullName, tasks })
+    addinscription({ fullName,  tasks }) {
+      addinscription({ fullName, tasks })
         .then(resp => resp.json())
-        .then(coiList => {
-          this.ListCOI = [...this.ListCOI, coiList];
+        .then(coiinscription => {
+          this.inscriptionCOI = [...this.inscriptionCOI, coiinscription];
         })
         .catch(err => {
           console.log(err);
         });
     },
-    infosCOIListToEdit(ListCOI) {
-      this.COILISTToEdit = { ...ListCOI };
-    },
-    editList({ id, fullName,  tasks }) {
-      editList(id, { fullName, tasks }).then(() => {
-        this.COILIST = this.COILIST.map(coiList => {
-          if (coiList.id === id) {
-            return {
-              id,
-              fullName,              
-              tasks
-            };
-          }
-          return coiList;
-        });
-      });
-    },
-    /*deleteList(id) {
-      deleteList(id).then(() => {
-        const indexOfListoDelete = this.COILIST.findIndex(
-          coiList => coiList.id === id
+    infosCOIinscriptionToEdit(inscriptionCOI) {
+      this.COIinscriptionToEdit = { ...inscriptionCOI };
+    },   
+    
+    /*deleteinscription(id) {
+      deleteinscription(id).then(() => {
+        const indexOfinscriptionoDelete = this.COIinscription.findIndex(
+          coiinscription => coiinscription.id === id
         );
-        this.COILIST.splice(indexOfListToDelete, 1);
+        this.COIinscription.splice(indexOfinscriptionToDelete, 1);
       });
     }
   }*/
