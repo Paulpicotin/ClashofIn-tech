@@ -1,11 +1,13 @@
 <template>
   <div>
     <h2>{{editMode ? 'Edit COIlist' : 'Add COIlist'}}</h2>
-    <label for="COINameInput">Name of the COIlist</label>
-    <input v-model="COIName" type="text" id="COINameInput" />
-    <label for="COITask">task of the COIlist</label>
-    <input v-model ="CoiTask" type ="text" id="COITask"/>  
-    <button v-on:click="submitForm">{{editMode ? 'EDIT' : 'INVITE'}}</button>
+    <label for="COINomInput">Nom</label>
+    <input v-model="COINom" type="text" id="COINomInput" />
+    <label for="COIPrenom">Prenom</label>
+    <input v-model ="CoiPremon" type ="text" id="COIPrenom"/>
+    <label for="COIPseudo">Pseudo</label>
+    <input v-model ="CoiPseudo" type ="text" id="COIPseudo"/>  
+    <button v-on:click="submitForm">{{editMode ? 'EDIT' : 'S INSCRIRE'}}</button>
   </div>
 </template>
 
@@ -14,8 +16,9 @@ export default {
   name: "FormCOI",
   data() {
     return {
-      COIName: null,     
-      CoiTask : null
+      COINom: null,     
+      COIPrenom : null,
+      COIPseudo: null
     };
   },
   props: {
@@ -28,20 +31,23 @@ export default {
   },
   watch: {
     COIlistToEdit: function(currentCOIlistToEdit) {
-      this.COIName = currentCOIlistToEdit.fullName;      
-      this.COITask = currentCOIlistToEdit.task;
+      this.COINom = currentCOIlistToEdit.nom;      
+      this.COIPrenom = currentCOIlistToEdit.prenom;
+      this.COIPseudo = currentCOIlistToEdit.pseudo;
     }
   },
   methods: {
     submitForm() {
       
-      this.$emit(this.editMode ? "editCOIlist" : "inviteCOIlist", {
+      this.$emit(this.editMode ? "editCOIlist" : "inviteCOIlist" , {
         id: this.COIlistToEdit ? this.COIlistToEdit.id : undefined,
-        fullName: this.COIName,        
-        task: this.COITask
+        nom: this.COINom,        
+        prenom: this.COIPrenom,
+        pseudo: this.COIPseudo
       });
-      this.COIName = null;      
-      this.COITask = null;
+      this.COINom = null;      
+      this.COIPrenom = null;
+      this.COIPseudo = null;
     }
   }
 };
