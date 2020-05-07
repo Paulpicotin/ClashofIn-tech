@@ -1,23 +1,6 @@
 <template>
   <div>
-    <h2>List of COIList</h2>
-    <table>
-      <thead>
-        <tr>
-          <th>FullName</th>          
-          <th>Tasks</th>
-          <th colspan="3">Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr v-for="COIList in ListCOI" v-bind:key="COIList.id">
-          <td>{{ COIName.fullName }}</td>          
-          <td>{{ COITask.tasks }}</td>
-          <td class="editLabel" v-on:click="editList(COIList)">EDIT</td>
-          <td class="deleteLabel" v-on:click="deleteList(COIList.id)">DELETE</td>
-        </tr>
-      </tbody>
-    </table>
+   
   </div>
 </template>
 
@@ -39,9 +22,9 @@ export default {
       this.$emit("editList", { ...COIList });
     }
   }
+  
 };
 </script>
-
 
 <style scoped>
 .deleteLabel {

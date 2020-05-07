@@ -10,24 +10,24 @@
     <FormCOI
       v-on:editinscription="editinscription"
       :inscriptiontoEdit="inscriptiontoEdit"
-      :editMode="true"
+      :editMode="false"
     />
   </div>
 </template>
 
 <script>
 import FormCOI from "./components/FormCOI.vue";
-//import COITable from "./components/COITable.vue";
+import COITable from "./components/COITable.vue";
 import {
   getinscription,
   addinscription,  
-  //deleteinscription
+  deleteinscription
 } from "./services/COIinscription.js";
 export default {
   name: "App",
   components: {
     FormCOI,
-    //COITable
+    COITable
   },
   data() {
     return {
@@ -37,7 +37,7 @@ export default {
   },
   async created() {
     const inscriptionCOI = await getinscription();
-    this.inscriptionCOI = [...inscriptionCOI];
+    this.inscriptionCOI = [...inscriptionCOI];    
   },
   methods: {
     randomKey() {
@@ -55,18 +55,17 @@ export default {
     },
     infosCOIinscriptionToEdit(inscriptionCOI) {
       this.COIinscriptionToEdit = { ...inscriptionCOI };
-    },   
+    },      
     
-    /*deleteinscription(id) {
+    deleteinscription(id) {
       deleteinscription(id).then(() => {
-        const indexOfinscriptionoDelete = this.COIinscription.findIndex(
+        const indexOfinscriptionToDelete = this.COITable.findIndex(
           coiinscription => coiinscription.id === id
         );
-        this.COIinscription.splice(indexOfinscriptionToDelete, 1);
+        this.COITable.splice(indexOfinscriptionToDelete, 1);        
       });
     }
-  }*/
-}
+  }
 };
 
 </script>
@@ -75,5 +74,6 @@ export default {
 #app {
   width: 80%;
   margin: auto;
+  margin-left: 40%;
 }
 </style>

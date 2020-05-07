@@ -9,7 +9,6 @@ function getinscription() {
       return data;
     });
 }
-
 function addinscription(COIinscription) {
   return fetch(`${SERVER_URL}/List`, {
     method: "POST",
@@ -17,10 +16,8 @@ function addinscription(COIinscription) {
       "Content-Type": "application/json"
     },
     body: JSON.stringify(COIinscription)
-  });
+  }); 
 }
-
-
 function deleteinscription (COIinscriptionId) {
   return fetch(`${SERVER_URL}/List/${COIinscriptionId}`, {
     method: "DELETE"
