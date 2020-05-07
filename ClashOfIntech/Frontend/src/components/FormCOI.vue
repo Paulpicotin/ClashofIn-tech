@@ -14,11 +14,12 @@
     <label for = "COIconfirmation">confirmation</label>
     <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
     <button v-on:click="submitForm">{{'S INSCRIRE'}}</button>
-    <button v-on:click="deleteForm"> {{'SE CONNECTER'}}</button>
+    <button v-on:click="nextpage"> {{'SE CONNECTER'}}</button>
   </div>
 </template>
 
 <script>
+import connexionCIO from "./COIconnexion.vue";
 export default {
   name: "FormCOI",
   data() {
@@ -66,9 +67,12 @@ export default {
       this.COIPseudo = null;
       this.COIPassword= null;
       this.COIconfirmation =null;
-      this.COIemail = null;
-    }
-  }
+      this.COIemail = null;   
+   },
+   nextPage(){
+     connexionCIO;     
+   },    
+  }    
 };
 </script>
 
