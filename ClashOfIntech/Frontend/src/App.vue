@@ -5,13 +5,9 @@
     <COITable
       :inscriptionCOI="inscriptionCOI"
       v-on:editinscription="infoscoiinscriptionToEdit"
-      v-on:deleteinscription="deleteinscription"
-    />
-    <FormCOI
-      v-on:editinscription="editinscription"
-      :inscriptiontoEdit="inscriptiontoEdit"
-      :editMode="false"
-    />
+      v-on:deleteinscripton="deleteinscription"
+    />   
+    
   </div>
 </template>
 
