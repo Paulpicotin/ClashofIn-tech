@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id= "connexion">
     <h2>{{'Connexion'}}</h2>   
     <label for="COIPseudo">Pseudo</label>
     <input v-model ="CoiPseudo" type ="text" id="COIPseudo"/>

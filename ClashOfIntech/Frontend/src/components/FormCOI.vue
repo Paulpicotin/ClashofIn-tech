@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id ="formInscription">
     <h2>{{'Inscription'}}</h2>
     <label for="COINomInput">Nom</label>
     <input v-model="COINom" type="text" id="COINomInput" />
@@ -7,21 +7,24 @@
     <input v-model ="CoiPremon" type ="text" id="COIPrenom"/>
     <label for="COIPseudo">Pseudo</label>
     <input v-model ="CoiPseudo" type ="text" id="COIPseudo"/>
-     <label for = "COIemail">email</label>
+    <label for = "COIemail">email</label>
     <input v-model ="COIemail" type ="text" id="COIemail"/>  
     <label for = "COIPassword">Password</label>
     <input v-model ="COIPassword" type ="text" id="COIPassword"/>
     <label for = "COIconfirmation">confirmation</label>
     <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
     <button v-on:click="submitForm">{{'S INSCRIRE'}}</button>
-    <button v-on:click="nextPage" >{{'SE CONNECTER'}}</button>
-    
+    <button v-on:click ="nextPage" >{{'SE CONNECTER'}}</button>
     
   </div>
 </template>
 
 <script>
-import COIconnexion from './COIconnexion.vue';
+import COIconnexionVue from './COIconnexion.vue';
+
+const routes = {
+  './COIconnexion.vue' : COIconnexionVue
+}
 export default {
   name: "FormCOI",
   data() {
@@ -51,6 +54,7 @@ export default {
       this.COIconfirmation = currentCOIlistToEdit.confirmation;
       this.COIemail = currentCOIlistToEdit.email; 
     }
+    
   },
   methods: {
     submitForm() {
@@ -72,8 +76,8 @@ export default {
       this.COIemail = null;  
        
    },
-   nextPage(){
-     this.$router.push(COIconnexion)
+   nextPage(){      
+     return this.$router.push(routes)         
    },    
   }    
 };
