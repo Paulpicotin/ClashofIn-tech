@@ -13,19 +13,16 @@
     <input v-model ="COIPassword" type ="text" id="COIPassword"/>
     <label for = "COIconfirmation">confirmation</label>
     <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
-    <button v-on:click="submitForm">{{'S INSCRIRE'}}</button>
-    <button v-on:click ="nextPage" >{{'SE CONNECTER'}}</button>
-    
+    <button v-on:click="submitForm">{{'S INSCRIRE'}}</button>       
+    <router-link to="./COIconnexion">
+    <button v-on:click ="nextPage" >{{'SE CONNECTER'}}</button></router-link>    
   </div>
 </template>
 
 <script>
-import COIconnexionVue from './COIconnexion.vue';
 
-const routes = {
-  './COIconnexion.vue' : COIconnexionVue
-}
 export default {
+ 
   name: "FormCOI",
   data() {
     return {
@@ -76,10 +73,12 @@ export default {
       this.COIemail = null;  
        
    },
-   nextPage(){      
-     return this.$router.push(routes)         
-   },    
-  }    
+   nextPage(){ 
+     this.$router.push('/connexion')
+    }      
+  }     
+   
+      
 };
 </script>
 

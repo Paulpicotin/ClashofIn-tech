@@ -4,13 +4,14 @@
     <label for="COIPseudo">Pseudo</label>
     <input v-model ="CoiPseudo" type ="text" id="COIPseudo"/>
     <label for = "COIPassword">Password</label>
-    <input v-model ="COIPassword" type ="text" id="COIPassword"/>    
+    <input v-model ="COIPassword" type ="text" id="COIPassword"/>
+    <button v-on:click ="nextPage">{{'C OKKKK'}}</button>    
   </div>
 </template>
 
 <script>
 export default {
-  name: "COIconnexion",
+  name: "connexion",
   data() {
     return {
       COIPseudo: null,

@@ -2,19 +2,23 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import App from './App.vue'
 
-Vue.config.productionTip = false
 Vue.use(VueRouter)
+Vue.config.productionTip = false
 
-import COIconnexion from './components/COIconnexion.vue'
+
+import COIconnexion from './components/COIconnexion'
+import COIInscription from './components/COIInscription'
 
 const routes = [
-  {path: '/connexion', components: COIconnexion}
+  {path: '/connexion', component: COIconnexion},
+  {path: '/inscription', component: COIInscription}
 ]
 
 const router = new VueRouter ({
   routes
+  
 })
 new Vue({
-  render: h => h(App),
-  router
+  router,
+  render: h => h(App)  
 }).$mount('#app')

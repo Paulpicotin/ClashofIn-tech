@@ -1,29 +1,22 @@
 <template>
   <div id="app">
-    <h1>CLASH OF INTECH</h1>
-    <FormCOI v-on:addinscription="addinscription" :editMode="false" />
-    <COITable
-      :inscriptionCOI="inscriptionCOI"
-      v-on:editinscription="infoscoiinscriptionToEdit"
-      v-on:deleteinscripton="deleteinscription"
-    />   
-    
+    <h1>CLASH OF INTECH</h1>    
+    <router-view></router-view>
   </div>
 </template>
 
 <script>
-import FormCOI from "./components/FormCOI.vue";
-import COITable from "./components/COITable.vue";
+
+//import COITable from "./components/COITable.vue";
 import {
-  getinscription,
+  //getinscription,
   addinscription,  
   deleteinscription
 } from "./services/COIinscription.js";
 export default {
   name: "App",
   components: {
-    FormCOI,
-    COITable
+    
   },
   data() {
     return {
@@ -31,9 +24,10 @@ export default {
       inscriptiontoEdit: null
     };
   },
-  async created() {
-    const inscriptionCOI = await getinscription();
-    this.inscriptionCOI = [...inscriptionCOI];    
+  created() {
+    //const inscriptionCOI = await getinscription();
+   // this.inscriptionCOI = [...inscriptionCOI];
+   this.$router.push('inscription')    
   },
   methods: {
     randomKey() {
@@ -63,6 +57,7 @@ export default {
     }
   }
 };
+//beforeenter
 
 </script>
 
@@ -73,3 +68,7 @@ export default {
   margin-left: 40%;
 }
 </style>
+
+
+
+
