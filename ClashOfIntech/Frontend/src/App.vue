@@ -1,6 +1,5 @@
 <template>
-  <div id="app">
-    <h1>CLASH OF INTECH</h1>    
+  <div id="app">        
     <router-view></router-view>
   </div>
 </template>
@@ -65,7 +64,7 @@ export default {
 #app {
   width: 80%;
   margin: auto;
-  margin-left: 40%;
+  margin-left: 0%;
 }
 </style>
 

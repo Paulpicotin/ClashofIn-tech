@@ -1,5 +1,6 @@
 <template>
   <div id ="formInscription">
+    <h1>CLASH OF INTECH</h1>
     <h2>{{'Inscription'}}</h2>
     <label for="COINomInput">Nom</label>
     <input v-model="COINom" type="text" id="COINomInput" />
@@ -13,9 +14,10 @@
     <input v-model ="COIPassword" type ="text" id="COIPassword"/>
     <label for = "COIconfirmation">confirmation</label>
     <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
-    <button v-on:click="submitForm">{{'S INSCRIRE'}}</button>       
-    <router-link to="./COIconnexion">
-    <button v-on:click ="nextPage" >{{'SE CONNECTER'}}</button></router-link>    
+    <router-link to = "./village">
+    <button class="inscrire" v-on:click="submitForm">{{'S INSCRIRE'}}</button></router-link>       
+    <router-link to="./connexion">
+    <button class="connexion" v-on:click ="nextPage" >{{'SE CONNECTER'}}</button></router-link>    
   </div>
 </template>
 
@@ -71,7 +73,8 @@ export default {
       this.COIPassword= null;
       this.COIconfirmation =null;
       this.COIemail = null;  
-       
+
+      this.$router.push('/village')       
    },
    nextPage(){ 
      this.$router.push('/connexion')
@@ -83,11 +86,25 @@ export default {
 </script>
 
 <style scoped>
+h1{
+  margin-left: 50%;
+}
+h2{
+  margin-left: 50%;
+}
 label,
 input {
   display: block;
   margin-bottom: 10px;
   width: 150px;
-  margin-left: 7%;
+  margin-left: 50%;
   }
+.inscrire{
+  margin-left: 50%;
+  flex: 1 1 auto;
+}
+.connexion{
+  flex: 1 1 auto;
+}
+
 </style>
