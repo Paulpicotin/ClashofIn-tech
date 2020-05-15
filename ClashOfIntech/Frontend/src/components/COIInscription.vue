@@ -77,8 +77,15 @@ export default {
       this.$router.push('/village')       
    },
    nextPage(){ 
+     buildUser()
      this.$router.push('/connexion')
-    }      
+    },
+   buildUser(){
+     const User = require('../backend/BasedeDonnee/user.model.js')
+       User.CreateUser(this.data)
+       console.log("Création du User " + this.COINom)        
+    }
+     
   }     
    
       
