@@ -14,7 +14,7 @@
     <label for = "COIconfirmation">confirmation</label>
     <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
     <button v-on:click="submitForm">{{'S INSCRIRE'}}</button>       
-    <router-link to="./COIconnexion">
+    <router-link to="./connexion">
     <button v-on:click ="nextPage" >{{'SE CONNECTER'}}</button></router-link>    
   </div>
 </template>
@@ -74,7 +74,8 @@ export default {
        
    },
    nextPage(){ 
-     this.$router.push('/connexion')
+     this.$router.push('/connexion'),
+     console.log(this.COINom)
     }      
   }     
    
