@@ -3,7 +3,7 @@ const config = require('../server.config.js')
 const pgtools = require('pgtools')
 
 
-class PostgresStore{
+class COI{
     /** @type { import('pg').Pool} */
     pool
     /** @type { import('pg').PoolClient} */
@@ -53,4 +53,4 @@ class PostgresStore{
     }
 }
 
-module.exports = new PostgresStore()
+module.exports = new COI()

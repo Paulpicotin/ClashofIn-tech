@@ -5,9 +5,8 @@
     <label class="ressource" for = "BOIS">BOIS</label>
     <label class="ressource" for="EAU">EAU</label>    
     <label class="ressource" for = "BLE">BLE</label>
-    <label class="ressource" for = "PIERRE">PIERRE</label>
-    <router-link to="./">
-    <button class="bouton" v-on:click ="param" >{{'PARAM'}}</button></router-link>
+    <label class="ressource" for = "PIERRE">PIERRE</label>    
+    <button class="bouton" v-on:click ="param" >{{'PARAM'}}</button>
     <router-link to="./">
     <button class="bouton" v-on:click ="attaque" >{{'ATTAQUE'}}</button></router-link> 
     <router-link to="./">
@@ -19,9 +18,19 @@
     
   </div>
 </template>
-
-
-
+<script>
+export default {
+  name: "village",
+  data() {
+    return {
+      idplayer: this.idplayer,
+      pseudo: this.pseudo,
+    };
+  },
+  methods:{
+  }
+}
+</script>
 
 <style scoped>
 .ressource{
@@ -37,9 +46,9 @@ input {
 }
 .bouton{
   background: #6AB6D8;
-  padding: 25px;
-  margin-top: 50%;
-  margin-left: 150px;
+  padding: 10px;
+  margin-top: 40%;
+  margin-left: 10%;
   border: 3px solid #2E86BB;
   color: white;
   font-size: 20px;
