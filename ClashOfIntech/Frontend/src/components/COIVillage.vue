@@ -39,7 +39,7 @@ export default {
   
   },
   methods:{
-    createdefense(){
+    createdefense(event){
       this.showdefense = !this.showdefense
       this.lastButtonCliked = event.target
     },
