@@ -3,7 +3,7 @@
     <h1>CLASH OF INTECH</h1>
     <h2>{{'Connexion'}}</h2>   
     <label for="COIPseudo">Pseudo</label>
-    <input v-model ="CoiPseudo" type ="text" id="COIPseudo"/>
+    <input v-model ="COIPseudo" type ="text" id="COIPseudo"/>
     <label for = "COIPassword">Password</label>
     <input v-model ="COIPassword" type ="text" id="COIPassword"/>
     <router-link to='/village'>

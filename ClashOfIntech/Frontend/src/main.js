@@ -9,11 +9,13 @@ Vue.config.productionTip = false
 import COIconnexion from './components/COIconnexion'
 import COIInscription from './components/COIInscription'
 import COIVillage from './components/COIVillage'
+import COIArmee from './components/COIArmee'
 
 const routes = [
   {path: '/connexion', component: COIconnexion},
   {path: '/inscription', component: COIInscription},
-  {path: '/village', component: COIVillage}
+  {path: '/village', component: COIVillage},
+  {path: '/armee', component: COIArmee} 
 ]
 
 const router = new VueRouter ({

@@ -5,9 +5,9 @@
     <label for="COINomInput">Nom</label>
     <input v-model="COINom" type="text" id="COINomInput" />
     <label for="COIPrenom">Prenom</label>
-    <input v-model ="CoiPremon" type ="text" id="COIPrenom"/>
+    <input v-model ="COIPrenom" type ="text" id="COIPrenom"/>
     <label for="COIPseudo">Pseudo</label>
-    <input v-model ="CoiPseudo" type ="text" id="COIPseudo"/>
+    <input v-model ="COIPseudo" type ="text" id="COIPseudo"/>
     <label for = "COIemail">email</label>
     <input v-model ="COIemail" type ="text" id="COIemail"/>  
     <label for = "COIPassword">Password</label>
