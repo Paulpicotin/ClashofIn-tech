@@ -39,9 +39,10 @@ export default {
   
   },
   methods:{
-    createdefense(event){
+    createdefense(evt){
       this.showdefense = !this.showdefense
-      this.lastButtonCliked = event.target
+      this.lastButtonCliked = evt.target
+      console.log(evt)
     },
         styleDropdown () {
       if (!this.lastButtonClicked) return {}
