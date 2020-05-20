@@ -65,8 +65,10 @@ export default {
         pseudo: this.COIPseudo,
         password: this.COIPassword,
         confirmation : this.COIconfirmation,
-        email : this.COIemail        
+        email : this.COIemail 
+               
       });
+  
       this.COINom = null;      
       this.COIPrenom = null;
       this.COIPseudo = null;
@@ -76,15 +78,10 @@ export default {
 
       this.$router.push('/village')       
    },
-   nextPage(){ 
-     buildUser()
+   nextPage(){     
      this.$router.push('/connexion')
     },
-   buildUser(){
-     const User = require('../backend/BasedeDonnee/user.model.js')
-       User.CreateUser(this.data)
-       console.log("Création du User " + this.COINom)        
-    }
+
      
   }     
    

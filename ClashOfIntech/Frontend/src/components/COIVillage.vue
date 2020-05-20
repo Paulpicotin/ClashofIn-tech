@@ -44,7 +44,7 @@ export default {
       this.lastButtonCliked = evt.target
       console.log(evt)
     },
-        styleDropdown () {
+    styleDropdown () {
       if (!this.lastButtonClicked) return {}
       const posFinal = this.lastButtonClicked.getBoundingClientRect()
       const dropdown = this.$refs.dropdown
