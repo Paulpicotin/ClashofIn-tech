@@ -6,15 +6,15 @@
     <label class="ressource" for="EAU">EAU</label>    
     <label class="ressource" for = "BLE">BLE</label>
     <label class="ressource" for = "PIERRE">PIERRE</label>    
-    <button class="bouton" v-on:click ="createparam()" >{{'PARAM'}}</button>
+    <button class="bouton" v-on:click ="createparam" >{{'PARAM'}}</button>
     <router-link to = "./village">
-    <button class="bouton" v-on:click ="createattaque()" >{{'ATTAQUE'}}</button></router-link> 
+    <button class="bouton" v-on:click ="createattaque" >{{'ATTAQUE'}}</button></router-link> 
     
-    <button class="bouton" v-on:click ="createdefense()" >{{'ARMEE'}}</button> 
+    <button class="bouton" v-on:click ="createdefense" >{{'ARMEE'}}</button> 
 
-    <button class="bouton" v-on:click ="createbatiment()" >{{'BATIMENT'}}</button> 
+    <button class="bouton" v-on:click ="createbatiment" >{{'BATIMENT'}}</button> 
 
-    <button class="bouton" v-on:click ="createameliorer()" >{{'AMELIORER'}}</button>
+    <button class="bouton" v-on:click ="createameliorer" >{{'AMELIORER'}}</button>
     <div ref="defense" id="dropdown" v-show= "showdefense" :style="styleDropdown()" >
         <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>
   </div>
@@ -47,7 +47,7 @@ export default {
       if (!this.lastButtonClicked) return {}
       const posFinal = this.lastButtonClicked.getBoundingClientRect()
       const dropdown = this.$refs.dropdown
-      console.log('dropdown', dropdown)
+      console.log('defense', dropdown)
       console.log('posfinal', posFinal)
       return {
         top: (posFinal.y + posFinal.height) + 'px',
@@ -77,7 +77,7 @@ export default {
     margin-left:120%;
 }
 input {
-    display: block;
+    display: flex;
     margin-bottom: 10px;
     width: 150px;
     margin-left: 7%;
