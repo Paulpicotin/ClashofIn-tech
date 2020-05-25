@@ -69,12 +69,28 @@ export default {
                
       });
   
+      var data = JSON.stringify({"name":this.COINom,"age":18,"password":this.COIPassword});
+
       this.COINom = null;      
       this.COIPrenom = null;
       this.COIPseudo = null;
       this.COIPassword= null;
       this.COIconfirmation =null;
       this.COIemail = null;  
+
+      var xhr = new XMLHttpRequest();
+      xhr.withCredentials = true;
+
+      xhr.addEventListener("readystatechange", function() {
+        if(this.readyState === 4) {
+          console.log(this.responseText);
+        }
+      });
+
+      xhr.open("POST", "http://localhost:3001/createUser");
+      xhr.setRequestHeader("Content-Type", "application/json");
+
+      xhr.send(data);
 
       this.$router.push('/village')       
    },
