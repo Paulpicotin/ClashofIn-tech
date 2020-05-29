@@ -1,22 +1,30 @@
 <template>
   <div id= "village">      
-    <label class="ressource" for="OR">OR</label>    
-    <label class="ressource" for = "FER">FER</label>
-    <label class="ressource" for = "BOIS">BOIS</label>
-    <label class="ressource" for="EAU">EAU</label>    
-    <label class="ressource" for = "BLE">BLE</label>
-    <label class="ressource" for = "PIERRE">PIERRE</label>    
-    <button class="bouton" v-on:click ="createparam" >{{'PARAM'}}</button>
-    <router-link to = "./village">
-    <button class="bouton" v-on:click ="createattaque" >{{'ATTAQUE'}}</button></router-link> 
+   <p>
+    <img class="ressources" src="../assets/ble.png" alt="corn" />
+    <img class="ressources" src="../assets/gold.png" alt="gold" />
+    <img class="ressources" src="../assets/iron.png" alt="iron" />
+    <img class="ressources" src="../assets/stone.png" alt="stone" />
+    <img class="ressources" src="../assets/water.png" alt="water" />
+    <img class="ressources" src="../assets/wood.png" alt="wood" />
+</p> 
+  <div id="bouton">
+    <button class="boutonparam" v-on:click ="createparam" ><img class="param" src="../assets/param.png" alt="param" /></button>
+    
+    <button class="bouton" v-on:click ="createattaque" >{{'ATTAQUE'}}</button> 
     
     <button class="bouton" v-on:click ="createdefense" >{{'ARMEE'}}</button> 
 
     <button class="bouton" v-on:click ="createbatiment" >{{'BATIMENT'}}</button> 
 
     <button class="bouton" v-on:click ="createameliorer" >{{'AMELIORER'}}</button>
-    <div ref="defense" id="dropdown" v-show= "showdefense" :style="styleDropdown()" >
-        <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>
+    <div ref="dropdown" id="dropdown" v-show= "showdefense" :style="styleDropdowndefense()" >
+      <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>
+          
+  </div>
+  <div ref="batiment" id="batiment" v-show= "showbatiment" :style="styleDropdownbatiment()" >
+    <button v-for="batiment of batiments" :key="batiment.id">{{batiment.name}}</button>  
+    </div>
   </div>
   </div>
  
@@ -27,31 +35,38 @@ export default {
   data() {    
     return {
       showdefense: false,
-      lastButtonCliked: null,
+      showbatiment: false,
+      lastButtonClicked: null,
       idplayer: 0,
       pseudo: "null",
       defenses:[
         {id: 0,name: 'douve'},
-        {id: 1, name: 'tower'}
+        {id: 1, name: 'tower'},
+        {id:2, name:'dongeon'}
         
+      ],
+      batiments:[
+        {id:0, name: 'chateau'},
+        {id:1, name: 'ferme'},
+        {id:2, name: 'mine de fer'}
       ]      
     };
   
   },
-  methods:{
+  methods:{    
     createdefense(evt){
       this.showdefense = !this.showdefense
-      this.lastButtonCliked = evt.target
-      console.log(evt)
+      this.lastButtonClicked = evt.target
+      console.log(evt.target)
     },
-    styleDropdown () {
+    styleDropdowndefense () {
       if (!this.lastButtonClicked) return {}
       const posFinal = this.lastButtonClicked.getBoundingClientRect()
       const dropdown = this.$refs.dropdown
-      console.log('defense', dropdown)
+      console.log('dropdown', dropdown)
       console.log('posfinal', posFinal)
       return {
-        top: (posFinal.y + posFinal.height) + 'px',
+        top: (posFinal.y - posFinal.height) + 'px',
         left: posFinal.x + 'px'
       }
     },
@@ -64,17 +79,33 @@ export default {
     createattaque(){
 
     },
-    createbatiment(){
-
+    createbatiment(evt){
+      this.showbatiment = !this.showbatiment
+      this.lastButtonClicked = evt.target
+      console.log(evt.target)
+    },
+    styleDropdownbatiment () {
+      if (!this.lastButtonClicked)  return {}
+      const posFinal = this.lastButtonClicked.getBoundingClientRect()
+      const batiment = this.$refs.batiment
+      console.log('batiments', batiment)
+      console.log('posfinal', posFinal)      
+      return {
+        top: (posFinal.y - posFinal.height) + 'px',
+        left: posFinal.x + 'px'
+      }      
     }
   }
 }
 </script>
 
 <style scoped>
-.ressource{
+
+.ressources{
     display: flex;
     flex-direction: column;
+    width: 25px;
+    height: 25px;
     margin-left:120%;
 }
 input {
@@ -89,18 +120,36 @@ input {
   width: 90px;
   border: 1px solid black;
 }
-#defense button{
+#dropdown button{
   display: block;
 }
-.bouton{
+#batiment {
+  position: absolute;
+  width: 90px;
+  border: 1px solid black;
+}
+#batiment button{
+  display: block;
+}
+#bouton .bouton{
   background: #6AB6D8;
   padding: 10px;
   margin-top: 40%;
   margin-left: 10%;
   border: 3px solid #2E86BB;
   color: white;
-  font-size: 20px;
+  font-size: 15px;
   text-align: center;
-  position: relative
+  position: relative;
+}
+.boutonparam{
+  opacity: 1;
+  border: white; 
+  background: white;
+    margin-left: 10%;
+}
+.param{
+  width: 75px;
+  height: 75px;
 }
 </style>

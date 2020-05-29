@@ -1,6 +1,6 @@
 <template>
   <div id= "connexion">
-    <h1>CLASH OF INTECH</h1>
+    <h1><img src="../assets/presentation.png" alt="icon"/></h1>
     <h2>{{'Connexion'}}</h2>   
     <label for="COIPseudo">Pseudo</label>
     <input v-model ="COIPseudo" type ="text" id="COIPseudo"/>
@@ -30,13 +30,21 @@ export default {
 </script>
 
 <style scoped>
-h1{
-  margin-left: 45%;
+h1 img{
+  margin-left: 35%;
+  width: 650px;
+  height:250px;
 }
 h2{
   margin-left: 50%;
 }
-label,
+label{
+  color: lawngreen;
+  display: block;
+  margin-bottom: 20px;
+  width: 150px;
+  margin-left: 50%;
+}
 input {
   display: block;
   margin-bottom: 20px;
@@ -45,5 +53,9 @@ input {
   }
 button{
   margin-left: 55%;
+}
+#connexion{
+  background-image: url(../assets/background.jpg) ;
+  background-size: cover;
 }
 </style>

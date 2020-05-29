@@ -1,7 +1,8 @@
 <template>
+
   <div id ="formInscription">
-    <h1>CLASH OF INTECH</h1>
-    <h2>{{'Inscription'}}</h2>
+    <h1><img src="../assets/presentation.png" alt="icon"/></h1>
+    <h2>{{'Inscription'}}</h2>        
     <label for="COINomInput">Nom</label>
     <input v-model="COINom" type="text" id="COINomInput" />
     <label for="COIPrenom">Prenom</label>
@@ -19,6 +20,7 @@
     <router-link to="./connexion">
     <button class="connexion" v-on:click ="nextPage" >{{'SE CONNECTER'}}</button></router-link>    
   </div>
+
 </template>
 
 <script>
@@ -90,25 +92,38 @@ export default {
 </script>
 
 <style scoped>
-h1{
-  margin-left: 50%;
+h1 img{
+  margin-left: 35%;
+  width: 650px;
+  height:250px;
 }
 h2{
-  margin-left: 50%;
+  margin-left: 55%;
 }
-label,
+label{
+  color:lawngreen;
+  display: block;
+  margin-bottom: 10px;
+  width: 150px;
+  margin-left: 55%;
+}
 input {
   display: block;
   margin-bottom: 10px;
   width: 150px;
-  margin-left: 50%;
+  margin-left: 55%;
   }
 .inscrire{
-  margin-left: 50%;
+  margin-left: 55%;
   flex: 1 1 auto;
 }
 .connexion{
   flex: 1 1 auto;
 }
+div{ 
+  background-image: url(../assets/background.jpg) ;
+  background-size: cover;
+}
+
 
 </style>
