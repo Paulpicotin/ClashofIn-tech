@@ -16,9 +16,9 @@
     <label for = "COIconfirmation">confirmation</label>
     <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
     <router-link to = "./village">
-    <button class="inscrire" v-on:click="submitForm">{{'S INSCRIRE'}}</button></router-link>       
+    <button class="inscrire" v-on:click="submitForm"><img src="../assets/boutonsinscrire.png" alt="panneau"/></button></router-link>       
     <router-link to="./connexion">
-    <button class="connexion" v-on:click ="nextPage" >{{'SE CONNECTER'}}</button></router-link>    
+    <button class="connexion" v-on:click ="nextPage" ><img src="../assets/boutonseconnecter.png" alt="panneau"/></button></router-link>    
   </div>
 
 </template>
@@ -114,15 +114,19 @@ input {
   margin-left: 55%;
   }
 .inscrire{
-  margin-left: 55%;
+  margin-left: 35%;
   flex: 1 1 auto;
+  border: none; 
+  background: none;
 }
 .connexion{
   flex: 1 1 auto;
+  border: none; 
+  background: none;
 }
 div{ 
   background-image: url(../assets/background.jpg) ;
-  background-size: cover;
+  background-size: 100% 100%;
 }
 
 

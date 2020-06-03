@@ -7,7 +7,7 @@
     <label for = "COIPassword">Password</label>
     <input v-model ="COIPassword" type ="text" id="COIPassword"/>
     <router-link to='/village'>
-    <button v-on:click ="nextPage">{{'C OKKKK'}}</button></router-link>    
+    <button v-on:click ="nextPage"><img src="../assets/boutonseconnecter.png" alt="panneau"/></button></router-link>    
   </div>
 </template>
 
@@ -31,7 +31,7 @@ export default {
 
 <style scoped>
 h1 img{
-  margin-left: 35%;
+  margin-left: 30%;
   width: 650px;
   height:250px;
 }
@@ -52,10 +52,13 @@ input {
   margin-left: 50%;
   }
 button{
-  margin-left: 55%;
+  margin-left: 45%;
+  border: none; 
+  background: none;
 }
 #connexion{
-  background-image: url(../assets/background.jpg) ;
+  background-position: 0 0;
+  background-image: url("../assets/background.jpg") ;
   background-size: cover;
 }
 </style>

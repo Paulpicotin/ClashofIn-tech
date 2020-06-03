@@ -11,13 +11,13 @@
   <div id="bouton">
     <button class="boutonparam" v-on:click ="createparam" ><img class="param" src="../assets/param.png" alt="param" /></button>
     
-    <button class="bouton" v-on:click ="createattaque" >{{'ATTAQUE'}}</button> 
+    <button class="bouton" v-on:click ="createattaque" ><img class="sword" src="../assets/sword.png" alt="sword" /></button> 
     
-    <button class="bouton" v-on:click ="createdefense" >{{'ARMEE'}}</button> 
+    <button class="bouton" v-on:click ="createdefense" ><img class="armybutton" src="../assets/armybutton.png" alt="armybutton" /></button> 
 
-    <button class="bouton" v-on:click ="createbatiment" >{{'BATIMENT'}}</button> 
+    <button class="bouton" v-on:click ="createbatiment" ><img class="wall" src="../assets/wall.png" alt="wall" /></button> 
 
-    <button class="bouton" v-on:click ="createameliorer" >{{'AMELIORER'}}</button>
+    <button class="bouton" v-on:click ="createameliorer" ><img class="levelup" src="../assets/levelup.png" alt="levelup.png" /></button>
     <div ref="dropdown" id="dropdown" v-show= "showdefense" :style="styleDropdowndefense()" >
       <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>
           
@@ -132,23 +132,26 @@ input {
   display: block;
 }
 #bouton .bouton{
-  background: #6AB6D8;
+  background: transparent;
+  opacity: 1;
   padding: 10px;
   margin-top: 40%;
   margin-left: 10%;
-  border: 3px solid #2E86BB;
-  color: white;
+  border: transparent;
+  color: transparent;
   font-size: 15px;
   text-align: center;
   position: relative;
 }
-.boutonparam{
+.boutonparam
+{
   opacity: 1;
   border: white; 
   background: white;
     margin-left: 10%;
 }
-.param{
+
+.param, .sword, .armybutton, .wall, .levelup{
   width: 75px;
   height: 75px;
 }
