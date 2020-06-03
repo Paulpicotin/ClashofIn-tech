@@ -2,11 +2,11 @@
   "name": "backend_coi",
   "version": "1.0.0",
   "description": "",
-  "main": "routes/index.js",
+  "main": "utils/COI.js",
   "private": true,
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "nodemon routes/index.js",
+    "start": "nodemon utils/COI.js",
     "reset": "node utils/init.js"
   },
   "author": "",

@@ -31,12 +31,31 @@ class User {
       }
 
       async CreateUser(data){
-        const result = await COI.pool.query({
+        const { Client } = require('pg')
+        const client = new Client()
+        
+        client.connect()
+
+        const result = await client.query({
             text: `INSERT INTO ex (COIPrenom, COINom, COIPseudo, COIEmail, COIPassword) VALUES ($1, $2, $3, $4, $5)`,
             values: [data.COIPrenom, data.COINom, data.COIPseudo, data.COIEmail, data.COIPassword]
         })
         return result.rows[0]
-    }
+      }
+
+
+      async ReturnUsers(){
+        const { Client } = require('pg')
+        const client = new Client()
+        
+        client.connect()
+        
+        const result = await client.query({
+          text: `SELECT* COINom FROM User`
+        })
+        return result
+      }
+
       
 }
 
