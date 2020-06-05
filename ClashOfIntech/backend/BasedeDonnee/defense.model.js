@@ -24,7 +24,7 @@ class Defense {
         return`
         CREATE TABLE ${Defense.tableName}(
             id SERIAL PRIMARY KEY,
-            id_building SERIAL FOREIGN KEY,            
+            id_building SERIAL,            
             name TEXT,
             life INT,
             defensive_point INT,

@@ -15,8 +15,8 @@ class BuildingAttack {
         return`
         CREATE TABLE ${BuildingAttack.tableName}(
             id SERIAL PRIMARY KEY,            
-            id_building SERIAL FOREIGN KEY,
-            id_attack SERIAL FOREIGN KEY,            
+            id_building SERIAL,
+            id_attack SERIAL,            
             name TEXT
         )`
     }

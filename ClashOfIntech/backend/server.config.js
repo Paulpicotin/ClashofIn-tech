@@ -1,10 +1,13 @@
 module.exports = {
   
-    postgres: {
+  ADMIN_EMAIL: 'vigoureux@intechinfo.fr',
+  ADMIN_FIRSTNAME: 'Aymeric',
+  ADMIN_LASTNAME: 'Vigoureux',
+  SESSION_SECRET: 'MY_SESSION_KEY',
+  postgres: {
     user: 'postgres',
     host: 'localhost',
-    database: 'CIO',
-    password: 'arcenciel2020'
+    database: 'COI',
+    password: 'root'
   }
-}
-;
+};

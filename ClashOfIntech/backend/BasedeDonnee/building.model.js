@@ -1,7 +1,7 @@
 const COI = require('../utils/COI.js')
 
 
-class Defense {
+class Building {
     /**@type {Number} */
     id
     /**@type {Number} */
@@ -17,10 +17,10 @@ class Defense {
     
     static toSqlTable (){
         return`
-        CREATE TABLE ${Defense.tableName}(
+        CREATE TABLE ${Building.tableName}(
             id SERIAL PRIMARY KEY,
-            id_town SERIAL FOREIGN KEY,
-            id_case SERIAL FOREIGN KEY,                       
+            id_town SERIAL,
+            id_case SERIAL,                       
             name TEXT,           
             length INT, 
             width INT
@@ -28,6 +28,6 @@ class Defense {
     }
 }
 /** @type {String} */
-Defense.tableName = 'defense'
+Building.tableName = 'building'
 
-module.exports = Defense
+module.exports = Building

@@ -15,8 +15,8 @@ class BuildingRessources {
         return`
         CREATE TABLE ${BuildingRessources.tableName}(
             id SERIAL PRIMARY KEY,            
-            id_building SERIAL FOREIGN KEY,
-            id_ressources SERIAL FOREIGN KEY,            
+            id_building SERIAL,
+            id_ressources SERIAL,            
             name TEXT
         )`
     }

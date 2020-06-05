@@ -23,10 +23,10 @@ class Admin  {
           id SERIAL PRIMARY KEY,
           firsname TEXT,
           lastname TEXT,
-          pseudo TEXT PRIMARY KEY,
+          pseudo TEXT,
           access_right TEXT,
           email TEXT,
-          password TEXT PRIMARY KEY         
+          password TEXT        
         )`
       }
       

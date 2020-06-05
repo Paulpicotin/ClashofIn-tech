@@ -1,2 +1,3 @@
-const COI = require('./COI.js')
-COI.reset()
+const COI = require('./COI.js');
+
+COI.reset();

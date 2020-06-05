@@ -1,4 +1,5 @@
 const COI = require('../utils/COI.js')
+const bcrypt = require('bcrypt');
 
 class User {
     /** @type {Number} */
@@ -9,8 +10,6 @@ class User {
     COINom
     /**@type {String} */
     COIPseudo    
-    /** @type {String[]} */
-    access_rights
     /**@type {String} */
     COIEmail
     /**@type {String} */
@@ -21,47 +20,85 @@ class User {
         return `
         CREATE TABLE ${User.tableName} (
           id SERIAL PRIMARY KEY,
-          COIPrenom TEXT,
-          COINom TEXT,
-          COIPseudo TEXT PRIMARY KEY,
-          access_right TEXT,
-          COIEmail TEXT,
-          COIPassword TEXT PRIMARY KEY         
+          COIPrenom TEXT NOT NULL,
+          COINom TEXT NOT NULL,
+          COIPseudo TEXT,
+          COIEmail TEXT UNIQUE NOT NULL,
+          COIPassword VARCHAR(60)         
         )`
       }
 
-      async CreateUser(data){
-        const { Client } = require('pg')
-        const client = new Client()
-        
-        client.connect()
+       /**
+   * @param {String} COIEmail
+   * @param {String} COIPassword
+   * @returns {Promise<User>}
+   */
+  static async verifyUser (COIEmail, COIPassword) {
+    const result = await COI.pool.query({
+      text: `SELECT * FROM ${User.tableName} WHERE COIEmail=$1`,
+      values: [COIEmail]
+    });
+    // on récupère le premier résultat du SELECT, et on prend le password
+    const currentPassword = result.rows[0].COIPassword;
+    // comme ce password est hashé, on le compare via bcrypt avec le mot de passe
+    // que l'utilisateur de la route de login a utilisé pour se connecter
+    const isSame = await bcrypt.compare(COIPassword, currentPassword);
+    // si c'est le même mot de passe, alors on retourne l'utilisateur
+    if (isSame) {
+      const user = result.rows[0];
+      delete user.COIPassword; // on ne doit jamais renvoyer le mot de passe de l'utilisateur
+      return user;
+    } else {
+      // sinon, on retourne null
+      return null;
+    }
+  }
 
-        const result = await client.query({
-            text: `INSERT INTO ex (COIPrenom, COINom, COIPseudo, COIEmail, COIPassword) VALUES ($1, $2, $3, $4, $5)`,
-            values: [data.COIPrenom, data.COINom, data.COIPseudo, data.COIEmail, data.COIPassword]
-        })
-        return result.rows[0]
-      }
+  /**
+   * @param {String} COIEmail
+   * @param {String[]} scope
+   * @returns {Promise<User>}
+   */
+  static async getByEmail (COIEmail, scope) {
+    // scope contient une liste comme 'id, email, firstname'
+    // on utilise donc .join(', ') pour retourner une chaîne de caractères séparée par des virgules
+    const fields = scope.join(', ');
+    const result = await COI.pool.query({
+      text: `SELECT ${fields} FROM ${User.tableName} WHERE COIEmail=$1`,
+      values: [COIEmail]
+    });
+    return result.rows[0];
+  }
 
+  /**
+   * @param {{COIEmail: String, COIPrenom: String, COINom: String, COIPseudo: String, COIPassword: String}} user
+   * @return {Promise<User>}
+   */
+  static async CreateUser (user) {
+    // lorsqu'on crée l'utilisateur, on ne stocke pas directement son mot de passe
+    // en bases de données, mais on va le hasher
+    const hashedPassword = await bcrypt.hash(user.COIPassword, 10);
+    // lorsque le mot de passe a été transformé en une suite de symboles illisibles,
+    // on le stocke avec le reste en base de données
 
-      async ReturnUsers(){
-        const { Client } = require('pg')
-        const client = new Client()
-        
-        client.connect()
-        
-        const result = await client.query({
-          text: `SELECT* COINom FROM User`
-        })
-        return result
-      }
+    const result = await COI.pool.query({
+      text: `INSERT INTO ${User.tableName} (COIPrenom, COINom, COIPseudo, COIEmail, COIPassword)
+        VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+      values: [user.COIPrenom, user.COINom, user.COIPseudo, user.COIEmail, hashedPassword]
+    });
 
+    const userResult = result.rows[0];
+    delete userResult.password; // on ne renvoie jamais le mot de passe de l'utilisateur
+    return userResult;
+  }
       
 }
 
 /** @type {String} */
-User.tableName = 'user'
+User.tableName = 'users'
 
 module.exports = User
+
+
 
     
