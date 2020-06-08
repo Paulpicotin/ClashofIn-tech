@@ -1,4 +1,4 @@
-const SERVER_URL = 'http://localhost:3001';
+const SERVER_URL = 'http://localhost:3002';
 
 /**
  * Get data from all users.
@@ -20,6 +20,25 @@ export function getAllUsers () {
 export function createUser (name, age, password) {
   // requête POST
   return fetch(`${SERVER_URL}/createUser`, {
+    method: 'post',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({ name, age, password })
+  })
+    .then(resp => resp.json());
+}
+
+/**
+ * Create and add user from the server data.
+ * @param {String} name User's name
+ * @param {Number} age User's age
+ * @param {String} password User's password
+ * @returns {Promise<{ id: String, name: String, age: Number }>} User's data
+ */
+export function createAdmin (name, age, password) {
+  // requête POST
+  return fetch(`${SERVER_URL}/api/createAdmin`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'

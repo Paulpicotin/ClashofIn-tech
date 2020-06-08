@@ -29,6 +29,14 @@ class Admin  {
           password TEXT        
         )`
       }
+
+      static async CreateAdmin(firsname, lastname, pseudo, email, password){
+        const result = await COI.pool.query({
+            text: `INSERT INTO Admin (firsname, lastname, pseudo, email, password) VALUES ($1, $2, $3, $4, $5)`,
+            values: [firsname, lastname, pseudo, email, password]
+        })
+        return result.rows[0]
+    }
       
 }
 /** @type {String} */

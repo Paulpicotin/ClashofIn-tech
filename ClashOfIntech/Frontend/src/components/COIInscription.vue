@@ -87,7 +87,7 @@ export default {
         }
       });
 
-      xhr.open("POST", "http://localhost:3001/createUser");
+      xhr.open("POST", "http://localhost:3002/api/createAdmin");
       xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.send(data);
