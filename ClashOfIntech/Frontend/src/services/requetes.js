@@ -34,16 +34,16 @@ export function createUser (name, age, password) {
  * @param {String} name User's name
  * @param {Number} age User's age
  * @param {String} password User's password
- * @returns {Promise<{ id: String, name: String, age: Number }>} User's data
+ * @returns {Promise<{ id: String, firstname: String, lastname: String, speudo: String, email: String, password: String}>} User's data
  */
-export function createAdmin (name, age, password) {
+export function createAdmin (firsname, lastname, pseudo, email, password) {
   // requête POST
   return fetch(`${SERVER_URL}/api/createAdmin`, {
     method: 'post',
     headers: {
       'Content-Type': 'application/json'
     },
-    body: JSON.stringify({ name, age, password })
+    body: JSON.stringify({ firsname, lastname, pseudo, email, password })
   })
     .then(resp => resp.json());
 }

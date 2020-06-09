@@ -69,7 +69,7 @@ export default {
                
       });
   
-      var data = JSON.stringify({"name":this.COINom,"age":18,"password":this.COIPassword});
+      var data = JSON.stringify({"firstname":this.COINom,"lastname":this.COIPrenom, "pseudo":this.COIPseudo, "email":this.COIemail,"password":this.COIPassword});
 
       this.COINom = null;      
       this.COIPrenom = null;

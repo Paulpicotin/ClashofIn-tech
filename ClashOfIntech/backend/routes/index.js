@@ -13,32 +13,26 @@ async function isAuthenticated (req, res, next) {
   res.status(401).send('unauthorized(1)');
 }
 
-  
-  /** @type {Array.<{
-   *    id: String,
-   *    name: String,
-   *    password: String,
-   *    age: Number
-   *  }>}
-   */
-  const bdd = [];
-
   router.post('/createAdmin', async (req, res) => {
     console.log(req.body);
 
+    //créer un nouvel admin 
     const user = { ...req.body};
-      await admin.CreateAdmin(user.name, user.password);
+      await admin.CreateAdmin(user.firstname, user.lastname, user.pseudo, user.email, user.password);
       console.log("Création de l'admin");
     
   
-    // renvoie au client de l'user avec son id.
+    // renvoie au client de l'user
     res.send({
-      name: user.name,
-      age: user.age
+      firstname: user.firstname,
+      lastname: user.lastname,
+      speudo: user.speudo,
+      email: user.email,
+      password: user.password
     });
   });
   
-  router.get('/users', (req, res) => {
+  /*router.get('/users', (req, res) => {
     console.log(req.params.id);
   
     // créer une nouvelle liste en retirant les mot de passe des user.
@@ -106,7 +100,7 @@ async function isAuthenticated (req, res, next) {
         // on renvoie 200 au client, succès de l'opération.
         res.send(200);
       }
-    });
+    });*/
 
 
 
