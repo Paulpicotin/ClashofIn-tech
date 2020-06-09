@@ -10,8 +10,8 @@
 </p> 
   <div id="bouton">
     <button class="boutonparam" v-on:click ="createparam" ><img class="param" src="../assets/param.png" alt="param" /></button>
-    
-    <button class="bouton" v-on:click ="createattaque" ><img class="sword" src="../assets/sword.png" alt="sword" /></button> 
+<router-link to='/attaque'>
+    <button class="bouton" v-on:click ="createattaque" ><img class="sword" src="../assets/sword.png" alt="sword" /></button></router-link>  
     
     <button class="bouton" v-on:click ="createdefense" ><img class="armybutton" src="../assets/armybutton.png" alt="armybutton" /></button> 
 
@@ -54,7 +54,7 @@ export default {
   
   },
   methods:{    
-    createdefense(evt){
+    lastbuttonclicked(evt){
       this.showdefense = !this.showdefense
       this.lastButtonClicked = evt.target
       console.log(evt.target)
@@ -72,18 +72,20 @@ export default {
     },
     createameliorer(){
 
-    } ,
+    },
+    createdefense(){
+
+    },
     createparam(){
 
     },
     createattaque(){
-
+      this.$router.push('/attaque')
     },
-    createbatiment(evt){
-      this.showbatiment = !this.showbatiment
-      this.lastButtonClicked = evt.target
-      console.log(evt.target)
-    },
+    createbatiment(){
+      
+    },   
+    
     styleDropdownbatiment () {
       if (!this.lastButtonClicked)  return {}
       const posFinal = this.lastButtonClicked.getBoundingClientRect()
@@ -106,7 +108,7 @@ export default {
     flex-direction: column;
     width: 25px;
     height: 25px;
-    margin-left:120%;
+    margin-left:90%;
 }
 input {
     display: flex;
@@ -148,11 +150,12 @@ input {
   opacity: 1;
   border: white; 
   background: white;
-    margin-left: 10%;
+  margin-left: 10%;
 }
 
 .param, .sword, .armybutton, .wall, .levelup{
   width: 75px;
   height: 75px;
 }
+
 </style>

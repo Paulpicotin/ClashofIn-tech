@@ -97,6 +97,10 @@ h1 img{
   width: 650px;
   height:250px;
 }
+h1{
+  margin:0;
+  padding:0;
+}
 h2{
   margin-left: 55%;
 }
@@ -124,10 +128,9 @@ input {
   border: none; 
   background: none;
 }
-div{ 
+#formInscription{
   background-image: url(../assets/background.jpg) ;
-  background-size: 100% 100%;
+  background-size: 100%;  
 }
-
 
 </style>

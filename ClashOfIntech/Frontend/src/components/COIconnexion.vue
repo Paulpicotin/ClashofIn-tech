@@ -1,13 +1,13 @@
 <template>
   <div id= "connexion">
-    <h1><img src="../assets/presentation.png" alt="icon"/></h1>
+    <img src="../assets/presentation.png" alt="icon"/>
     <h2>{{'Connexion'}}</h2>   
     <label for="COIPseudo">Pseudo</label>
     <input v-model ="COIPseudo" type ="text" id="COIPseudo"/>
     <label for = "COIPassword">Password</label>
     <input v-model ="COIPassword" type ="text" id="COIPassword"/>
     <router-link to='/village'>
-    <button v-on:click ="nextPage"><img src="../assets/boutonseconnecter.png" alt="panneau"/></button></router-link>    
+    <button class="connexion" v-on:click ="nextPage" ><img src="../assets/boutonseconnecter.png" alt="panneau"/></button></router-link>     
   </div>
 </template>
 
@@ -24,17 +24,17 @@ export default {
     nextPage(){
       this.$router.push('/village')
     }
-
   }
 }
 </script>
 
 <style scoped>
-h1 img{
+img{
   margin-left: 30%;
   width: 650px;
   height:250px;
 }
+
 h2{
   margin-left: 50%;
 }
@@ -51,14 +51,16 @@ input {
   width: 150px;
   margin-left: 50%;
   }
-button{
-  margin-left: 45%;
+#connexion{
+  background-image: url(../assets/background.jpg) ;
+  background-size: 100%;  
+}
+.connexion{
+  flex: 1 1 auto;
+  margin-left: 20%;
   border: none; 
   background: none;
 }
-#connexion{
-  background-position: 0 0;
-  background-image: url("../assets/background.jpg") ;
-  background-size: cover;
-}
+
+
 </style>
