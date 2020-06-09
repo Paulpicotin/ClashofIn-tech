@@ -1,38 +1,45 @@
 
+class Game{
 
-    let name;
-    let owner;
-    let clock;
-    let end;
+    name;
+    clock;
+    owner;
+    end;
 
-    function Game(){
-        this.name = SetName();
-        this.owner = SetOwnerName();
+    constructor(){
+        this.name = this.SetName();
+        this.owner = this.SetOwnerName();
         this.clock = new Clock();
         this.end = 180;
-    }
-    
-    function StartGame () {
+    };
+
+    const 
+
+    StartGame () {
     	var c = new Clock();
     	c.StartClock(end);
-    }
+    };
 
-    function SetName (){
-    	System.out.println("Entrez le nom de votre partie");
-    	let gameName = sc.next();
-    	return gameName;
-    }
+    SetName (name){
+        this.name = name;
+    };
 
-    function SetOwnerName (){
-    	System.out.println("Entrez votre nom");
-    	let ownerName = sc.next();
-    	return ownerName;
+    SetOwnerName (owner){
+        this.owner = owner;
     }
     
-    function GetClock() {
+    GetClock() {
     	return this.clock;
     }
-    function GetEnd() {
+    GetEnd() {
     	return this.end;
-    }
+    };
+};
+
+test1 = new Game();
+console.log(test1);
+test1.StartGame();    
+    
+module.exports = Game;
+    
 

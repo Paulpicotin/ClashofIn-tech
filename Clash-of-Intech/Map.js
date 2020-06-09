@@ -1,118 +1,133 @@
+const Square = require('./Square.js');
+const Soldier = require('./Soldier.js')
 
+class Map{
 
+	longueur;
+	largeur;
+	//ArrayList <Buiding> buildings;
+	goldCounter;
+	ironCounter;
+	woodCounter;
+	waterCounter; 
+	wheatCounter;
+	soldier;
 
-	
-	let longitude;
-	let longueur;
-	let largeur;
-	let latitude;
-	List <Buiding> buildings;
-	let goldCounter;
-	let ironCounter;
-	let woodCounter;
-	let waterCounter; 
-	let cornCounter;
-	//todo compteur ressources
-	let soldier = new Soldier();
-	
-	function Map (lat, longit, longu, larg) {
-		this.latitude = lat;
-		this.longitude = longit;
-		this.longueur = longu;
+	constructor(long, larg){
+		this.longueur = long;
 		this.largeur = larg;
-	}
+	};
 	
-	
-	function getLatitude() {
-		return latitude;
-	}
+	getLongueur() {
+		return this.longueur;
+	};
 
-	function setLatitude(latitude) {
-		this.latitude = latitude;
-	}
-
-	function getLongitude() {
-		return longitude;
-	}
-
-	function setLongitude(longitude) {
-		this.longitude = longitude;
-	}
-
-	function getLongueur() {
-		return longueur;
-	}
-
-	function setLongueur(longueur) {
+	setLongueur(longueur) {
 		this.longueur = longueur;
-	}
+	};
 
-	function getLargeur() {
-		return largeur;
-	}
+	getLargeur() {
+		return this.largeur;
+	};
 
-	function setLargeur(largeur) {
+	setLargeur(largeur) {
 		this.largeur = largeur;
-	}
+	};
 	
-	function getGoldCounter() {
-		return goldCounter;
-	}
+	getGoldCounter() {
+		return this.goldCounter;
+	};
 
 
-	function setGoldCounter(goldCounter) {
+	setGoldCounter(goldCounter) {
 		this.goldCounter = goldCounter;
-	}
+	};
 
 
-	function getIronCounter() {
-		return ironCounter;
-	}
+	getIronCounter() {
+		return this.ironCounter;
+	};
 
 
-	function setIronCounter(ironCounter) {
+	setIronCounter(ironCounter) {
 		this.ironCounter = ironCounter;
-	}
+	};
 
 
-	function getWoodCounter() {
-		return woodCounter;
-	}
+	getWoodCounter() {
+		return this.woodCounter;
+	};
 
 
-	function setWoodCounter(woodCounter) {
+	setWoodCounter(woodCounter) {
 		this.woodCounter = woodCounter;
-	}
+	};
 
 
-	function getWaterCounter() {
-		return waterCounter;
-	}
+	getWaterCounter() {
+		return this.waterCounter;
+	};
 
 
-	function setWaterCounter(waterCounter) {
+	setWaterCounter(waterCounter) {
 		this.waterCounter = waterCounter;
-	}
+	};
 
 
-	function getCornCounter() {
-		return cornCounter;
-	}
+	getWheatCounter() {
+		return this.wheatCounter;
+	};
 
 
-	function setCornCounter(cornCounter) {
-		this.cornCounter = cornCounter;
-	}
+	setWheatCounter(wheatCounter) {
+		this.wheatCounter = wheatCounter;
+	};
 
 
-	function getSoldier() {
-		return soldier;
-	}
+	getSoldier() {
+		return this.soldier;
+	};
 
 
-	function setSoldier(soldier) {
+	setSoldier(soldier) {
 		this.soldier = soldier;
-	}
+	};
+	
+	createMap (){
+		var i=0;
+		var j=0;
+		for (i; i < this.getLongueur(); i++){
+			for (j; j < this.getLargeur(); j++){
+				var square = new Square(i,j);
+				console.log(square);
+				/*var squares = new Array(getLongueur())
+					for (k=0; k < getLongueur(); k++){
+      					squares[k] = new Array(getLargeur())
+				}*/
+			}
+		}
+	};
+}
 
+map1 = new Map(3,3);
+console.log(map1);
+map1.createMap();
+map1.setWheatCounter(20);
+console.log(map1.getWheatCounter());
+map1.setGoldCounter(100);
+console.log(map1.getGoldCounter());
+map1.setWaterCounter(50);
+console.log(map1.getWaterCounter());
+map1.setIronCounter(25);
+console.log(map1.getIronCounter());
+map1.setWoodCounter(25);
+console.log(map1.getWoodCounter());
+soldier = new Soldier("Soldat1", 10, 10, 3, 1);
+console.log(soldier);
+	
+module.exports = Map;	
+	
+
+	
 
 

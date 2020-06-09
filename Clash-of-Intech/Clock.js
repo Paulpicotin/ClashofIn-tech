@@ -1,33 +1,36 @@
+class Clock{
+	secondes;
+	start;
+	minutes;
 
-var Clock = new Object;
-	
-	let secondes;
-	let start;
-	let minutes;
-	
-	function Clock () {
+	constructor(){
 		this.secondes = 0;
 		this.start = false;
 	}
 	
-	function StartClock(end) {
+	StartClock(end) {
 		if(this.start == false) {
-			start = true;
+			this.start = true;
 		}
-		
-		for (GetSecondes(); GetSecondes() < end; this.secondes++) {
-			try {
-			    Thread.sleep(1000);
-			} 
-			catch (InterruptedException) {
-			
-			}
-			System.out.println("nbr seconde: " + this.GetSecondes());
+		var timeStart = new Date();
+		while(this.start == true){
+			var timeStop = new Date();
+			var passedTime = timeStop - timeStart;
+			this.secondes = passedTime / 1000 ;
+			console.log(this.secondes);
 		}
-		System.out.println("fini");
+
+		console.log("fini");
 	}
 	
-	function GetSecondes(){
+	GetSecondes(){
 		return secondes;
 	}
 
+}
+
+test1 = new Clockt();
+console.log(test1);
+test1.StartClock();
+	
+module.exports = Clock;
