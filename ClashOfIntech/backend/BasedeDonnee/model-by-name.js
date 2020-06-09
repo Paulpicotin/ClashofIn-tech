@@ -3,8 +3,8 @@ const Role = require('./role.model.js');
 const Attack = require('./attack.model.js');
 const Admin = require('./admin.model.js');
 const Defense = require('./defense.model.js');
-const Case = require('./case.model.js');
 const Town =require ('./town.model.js');
+const Cases =require ('./cases.model.js');
 const Ressources = require ('./ressources.model.js');
 const Building = require ('./building.model.js');
 const BuildingRessources = require ('./building_ressources.model.js');
@@ -18,8 +18,8 @@ module.exports = [
   Attack,
   Defense,
   Building,
-  Case,
   Town,
+  Cases,
   Ressources,
   BuildingAttack,
   BuildingRessources

@@ -23,12 +23,20 @@ class Admin  {
           id SERIAL PRIMARY KEY,
           firsname TEXT,
           lastname TEXT,
-          pseudo TEXT PRIMARY KEY,
+          pseudo TEXT,
           access_right TEXT,
           email TEXT,
-          password TEXT PRIMARY KEY         
+          password TEXT        
         )`
       }
+
+      static async CreateAdmin(firsname, lastname, pseudo, email, password){
+        const result = await COI.pool.query({
+            text: `INSERT INTO Admin (firsname, lastname, pseudo, email, password) VALUES ($1, $2, $3, $4, $5)`,
+            values: [firsname, lastname, pseudo, email, password]
+        })
+        return result.rows[0]
+    }
       
 }
 /** @type {String} */

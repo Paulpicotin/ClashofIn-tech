@@ -20,7 +20,7 @@ class Town{
     return `
     CREATE TABLE ${Town.tableName} (
         id SERIAL PRIMARY KEY,
-        id_player SERIAL FOREIGN KEY,
+        id_player SERIAL,
         length INT, 
         width INT,
         townname TEXT

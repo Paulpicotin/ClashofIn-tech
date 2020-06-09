@@ -1,27 +1,27 @@
 const COI = require('../utils/COI.js')
 
 
-class Ressources {
+class Cases {
     /**@type {Number} */
     id
     /**@type {Number} */
     id_town
     /**@type {Number} */
-    quantity
+    length   
     /**@type {String} */
-    name
-
+    width
+    
     static toSqlTable (){
         return`
-        CREATE TABLE ${Ressources.tableName}(
-            id SERIAL PRIMARY KEY,
+        CREATE TABLE ${Cases.tableName}(
+            id SERIAL PRIMARY KEY,            
             id_town SERIAL,
-            quantity INT,
-            name TEXT
+            length INT,            
+            width INT
         )`
     }
 }
 /** @type {String} */
-Ressources.tableName = 'ressources'
+Cases.tableName = 'cases'
 
-module.exports = Ressources
+module.exports = Cases
