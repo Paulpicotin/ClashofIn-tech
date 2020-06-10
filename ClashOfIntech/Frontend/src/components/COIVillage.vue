@@ -1,31 +1,41 @@
 <template>
-  <div id= "village">      
-   <p>
-    <img class="ressources" src="../assets/ble.png" alt="corn" />
-    <img class="ressources" src="../assets/gold.png" alt="gold" />
-    <img class="ressources" src="../assets/iron.png" alt="iron" />
-    <img class="ressources" src="../assets/stone.png" alt="stone" />
-    <img class="ressources" src="../assets/water.png" alt="water" />
-    <img class="ressources" src="../assets/wood.png" alt="wood" />
-</p> 
-  <div id="bouton">
-    <button class="boutonparam" v-on:click ="createparam" ><img class="param" src="../assets/param.png" alt="param" /></button>
-<router-link to='/attaque'>
-    <button class="bouton" v-on:click ="createattaque" ><img class="sword" src="../assets/sword.png" alt="sword" /></button></router-link>  
-    
-    <button class="bouton" v-on:click ="createdefense" ><img class="armybutton" src="../assets/armybutton.png" alt="armybutton" /></button> 
+  <div id="village">      
+    <nav class="ressources">
+      <img src="../assets/ble.png" alt="corn" />
+      <img src="../assets/gold.png" alt="gold" />
+      <img src="../assets/iron.png" alt="iron" />
+      <img src="../assets/stone.png" alt="stone" />
+      <img src="../assets/water.png" alt="water" />
+      <img src="../assets/wood.png" alt="wood" />
+    </nav> 
+    <nav id="bouton">
+      <button class="boutonparam" v-on:click="createparam" >
+        <img src="../assets/param.png" alt="param" />
+      </button>
+      <router-link to='/attaque'>
+        <button class="bouton" v-on:click="createattaque" >
+          <img src="../assets/sword.png" alt="sword" />
+        </button>
+      </router-link>  
+      
+      <button class="bouton" v-on:click="updateLastButtonClicked($event, 'defense')">
+        <img src="../assets/armybutton.png" alt="armybutton" />
+      </button> 
 
-    <button class="bouton" v-on:click ="createbatiment" ><img class="wall" src="../assets/wall.png" alt="wall" /></button> 
+      <button class="bouton" v-on:click="updateLastButtonClicked($event, 'batiment')">
+        <img  src="../assets/wall.png" alt="wall" />
+      </button> 
 
-    <button class="bouton" v-on:click ="createameliorer" ><img class="levelup" src="../assets/levelup.png" alt="levelup.png" /></button>
-    <div ref="dropdown" id="dropdown" v-show= "showdefense" :style="styleDropdowndefense()" >
-      <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>
-          
-  </div>
-  <div ref="batiment" id="batiment" v-show= "showbatiment" :style="styleDropdownbatiment()" >
-    <button v-for="batiment of batiments" :key="batiment.id">{{batiment.name}}</button>  
-    </div>
-  </div>
+      <button class="bouton" v-on:click="createameliorer" >
+        <img src="../assets/levelup.png" alt="levelup.png" />
+      </button>
+      <div id="dropdown" v-show="showdefense" :style="styleDropdown()">
+        <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>          
+      </div>
+      <div id="batiment" v-show="showbatiment" :style="styleDropdown()">
+        <button v-for="batiment of batiments" :key="batiment.id">{{batiment.name}}</button>  
+      </div>
+    </nav>
   </div>
  
 </template>
@@ -54,17 +64,18 @@ export default {
   
   },
   methods:{    
-    lastbuttonclicked(evt){
-      this.showdefense = !this.showdefense
+    updateLastButtonClicked(evt, param){
+      if (param == 'defense'){
+        this.showdefense = !this.showdefense
+      }else if (param =='batiment'){
+        this.showbatiment = !this.showbatiment
+      }
       this.lastButtonClicked = evt.target
-      console.log(evt.target)
+      
     },
-    styleDropdowndefense () {
+    styleDropdown() {
       if (!this.lastButtonClicked) return {}
-      const posFinal = this.lastButtonClicked.getBoundingClientRect()
-      const dropdown = this.$refs.dropdown
-      console.log('dropdown', dropdown)
-      console.log('posfinal', posFinal)
+      const posFinal = this.lastButtonClicked.getBoundingClientRect()      
       return {
         top: (posFinal.y - posFinal.height) + 'px',
         left: posFinal.x + 'px'
@@ -73,37 +84,20 @@ export default {
     createameliorer(){
 
     },
-    createdefense(){
-
-    },
+    
     createparam(){
 
     },
     createattaque(){
       this.$router.push('/attaque')
-    },
-    createbatiment(){
-      
-    },   
-    
-    styleDropdownbatiment () {
-      if (!this.lastButtonClicked)  return {}
-      const posFinal = this.lastButtonClicked.getBoundingClientRect()
-      const batiment = this.$refs.batiment
-      console.log('batiments', batiment)
-      console.log('posfinal', posFinal)      
-      return {
-        top: (posFinal.y - posFinal.height) + 'px',
-        left: posFinal.x + 'px'
-      }      
-    }
+    }             
   }
 }
 </script>
 
 <style scoped>
 
-.ressources{
+.ressources img{
     display: flex;
     flex-direction: column;
     width: 25px;
@@ -133,17 +127,21 @@ input {
 #batiment button{
   display: block;
 }
+#bouton{
+  position: absolute;
+  bottom: 0;
+  width:100%;
+}
 #bouton .bouton{
   background: transparent;
   opacity: 1;
-  padding: 10px;
-  margin-top: 40%;
+  padding: 10px;    
   margin-left: 10%;
   border: transparent;
   color: transparent;
   font-size: 15px;
   text-align: center;
-  position: relative;
+  position:relative;
 }
 .boutonparam
 {
@@ -153,7 +151,7 @@ input {
   margin-left: 10%;
 }
 
-.param, .sword, .armybutton, .wall, .levelup{
+#bouton img{
   width: 75px;
   height: 75px;
 }

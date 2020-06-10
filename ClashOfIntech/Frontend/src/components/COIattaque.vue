@@ -10,13 +10,16 @@
 </template>
 
 <script>
+
 export default {
   name: "attaque",
   data() {
-    
+    return {
+
+    }
   },
   methods: {
-    nextPage(){
+    nextPage() {
       this.$router.push('/village')
     },
     atack(){

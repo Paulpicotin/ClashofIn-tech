@@ -29,6 +29,7 @@ export default {
  
   name: "FormCOI",
   data() {
+    
     return {
       COINom: null,     
       COIPrenom : null,
@@ -70,7 +71,7 @@ export default {
         email : this.COIemail 
                
       });
-  
+      
       var data = JSON.stringify({"firstname":this.COINom,"lastname":this.COIPrenom, "pseudo":this.COIPseudo, "email":this.COIemail,"password":this.COIPassword});
 
       this.COINom = null;      
@@ -93,8 +94,9 @@ export default {
       xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.send(data);
-
-      this.$router.push('/village')       
+    
+      this.$router.push('/village')  
+    
    },
    nextPage(){     
      this.$router.push('/connexion')

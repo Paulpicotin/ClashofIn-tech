@@ -1,6 +1,6 @@
 module.exports = {
   
-  ADMIN_EMAIL: 'vigoureux@intechinfo.fr',
+  ADMIN_EMAIL: 'picotin@intechinfo.fr',
   ADMIN_FIRSTNAME: 'Aymeric',
   ADMIN_LASTNAME: 'Vigoureux',
   SESSION_SECRET: 'MY_SESSION_KEY',
