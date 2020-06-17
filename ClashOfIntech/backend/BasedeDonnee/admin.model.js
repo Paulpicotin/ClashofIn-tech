@@ -25,17 +25,27 @@ class Admin  {
           lastname TEXT,
           pseudo TEXT,
           access_right TEXT,
-          email TEXT,
+          email  TEXT UNIQUE NOT NULL,
           password TEXT        
         )`
       }
 
       static async CreateAdmin(firsname, lastname, pseudo, email, password){
+        try{
         const result = await COI.pool.query({
             text: `INSERT INTO Admin (firsname, lastname, pseudo, email, password) VALUES ($1, $2, $3, $4, $5)`,
             values: [firsname, lastname, pseudo, email, password]
         })
         return result.rows[0]
+      }catch(err){
+        console.log(err.code)
+        if (err.code === "23505"){
+          throw new Error("l'email  est déjà utilisé")
+        }
+        else {
+          throw err
+        }
+      }
     }
       
 }

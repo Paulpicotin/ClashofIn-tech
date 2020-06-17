@@ -15,7 +15,12 @@ import COIattaque from './components/COIattaque'
 const routes = [
   {path: '/connexion', component: COIconnexion},
   {path: '/inscription', component: COIInscription},
-  {path: '/village', component: COIVillage},
+  {path: '/village', component: COIVillage, props: false},
+  {
+    path: '/village',
+    components: { default: COIVillage, verification: false},
+    props: { default: true, verification: false }
+  },
   {path: '/attaque', component: COIattaque},
  
 ]

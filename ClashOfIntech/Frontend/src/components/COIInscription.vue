@@ -12,13 +12,19 @@
     <label for = "COIemail">email</label>
     <input v-model ="COIemail" type ="text" id="COIemail"/>  
     <label for = "COIPassword">Password</label>
-    <input v-model ="COIPassword" type ="text" id="COIPassword"/>
+    <input v-model ="COIPassword" type ="text" id="COIPassword" v-on:input='ecouteur()'/>
     <label for = "COIconfirmation">confirmation</label>
-    <input v-model ="COIconfirmation" type ="text" id="COIconfirmation"/>
-    <router-link to = "./village">
-    <button class="inscrire" v-on:click="submitForm"><img src="../assets/boutonsinscrire.png" alt="panneau"/></button></router-link>       
+    <input v-model ="COIconfirmation" type ="text" id="COIconfirmation" v-on:input='ecouteur()' />
+   
+      <button  class="inscrire"  v-on:click="submitForm" >
+        <img src="../assets/boutonsinscrire.png" alt="panneau"/>
+      </button>
+         
     <router-link to="./connexion">
-    <button class="connexion" v-on:click ="nextPage" ><img src="../assets/boutonseconnecter.png" alt="panneau"/></button></router-link>    
+      <button class="connexion" v-on:click ="nextPage" >
+        <img src="../assets/boutonseconnecter.png" alt="panneau"/>
+      </button>
+    </router-link>    
   </div>
 
 </template>
@@ -28,16 +34,17 @@
 export default {
  
   name: "FormCOI",
-  data() {
-    
+  data() {    
     return {
       COINom: null,     
       COIPrenom : null,
       COIPseudo: null,
       COIPassword: null,
       COIconfirmation : null,
-      COIemail : null
+      COIemail : null, 
+      verification: false 
     };
+    
   },
   props: {
     editMode: Boolean,
@@ -59,6 +66,15 @@ export default {
     
   },
   methods: {
+   ecouteur(){
+      if (this.COIPassword !==this.COIconfirmation){
+        this.verification = false
+        console.log(this.verification)        
+        throw console.error("le mot de passe n'est pas identique");                
+      }else{
+        this.verification = true           
+      }
+    },
     submitForm() {
       
       this.$emit(this.editMode ? "editCOIlist" : "inviteCOIlist" , {
@@ -74,12 +90,12 @@ export default {
       
       var data = JSON.stringify({"firstname":this.COINom,"lastname":this.COIPrenom, "pseudo":this.COIPseudo, "email":this.COIemail,"password":this.COIPassword});
 
-      this.COINom = null;      
+     /* this.COINom = null;      
       this.COIPrenom = null;
       this.COIPseudo = null;
       this.COIPassword= null;
       this.COIconfirmation =null;
-      this.COIemail = null;  
+      this.COIemail = null;  */
 
       var xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
@@ -91,21 +107,21 @@ export default {
       });
 
       xhr.open("POST", "http://localhost:3002/api/createAdmin");
-      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.setRequestHeader("Content-Type", "application/json"); 
 
-      xhr.send(data);
-    
-      this.$router.push('/village')  
-    
-   },
+      xhr.send(data);    
+        
+      if  (this.verification) {       
+        this.$router.push('/village')
+      }
+      else{
+        alert("le mot de passe n'est pas le même")
+      }      
+    },
    nextPage(){     
      this.$router.push('/connexion')
     },
-
-     
-  }     
-   
-      
+  }       
 };
 </script>
 

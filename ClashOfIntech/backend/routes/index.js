@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+const Verification = require ('../Controller/verification.js')
 const uuidV4 = require('uuid').v4;
 const admin = require('../BasedeDonnee/admin.model.js');
 
@@ -14,22 +15,26 @@ async function isAuthenticated (req, res, next) {
 }
 
   router.post('/createAdmin', async (req, res) => {
-    console.log(req.body);
+    try{
+      console.log(req.body);
 
-    //créer un nouvel admin 
-    const user = { ...req.body};
+      //créer un nouvel admin 
+      const user = { ...req.body};
       await admin.CreateAdmin(user.firstname, user.lastname, user.pseudo, user.email, user.password);
       console.log("Création de l'admin");
+      
     
-  
-    // renvoie au client de l'user
-    res.send({
-      firstname: user.firstname,
-      lastname: user.lastname,
-      speudo: user.speudo,
-      email: user.email,
-      password: user.password
-    });
+      // renvoie au client de l'user
+      res.send({
+        firstname: user.firstname,
+        lastname: user.lastname,
+        speudo: user.speudo,
+        email: user.email,
+        password: user.password
+      });
+    }catch(err){
+      res.status(500).send(err.message)
+    }
   });
   
   /*router.get('/users', (req, res) => {
