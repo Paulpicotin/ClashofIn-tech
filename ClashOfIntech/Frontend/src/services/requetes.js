@@ -17,7 +17,7 @@ export function getAllUsers () {
  * @param {String} password User's password
  * @returns {Promise<{ id: String, name: String, age: Number }>} User's data
  */
-export function createUser (name, age, password) {
+export function CreateUser (name, age, password) {
   // requête POST
   return fetch(`${SERVER_URL}/createUser`, {
     method: 'post',

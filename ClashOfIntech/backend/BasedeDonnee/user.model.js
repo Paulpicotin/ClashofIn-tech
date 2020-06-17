@@ -75,21 +75,30 @@ class User {
    * @return {Promise<User>}
    */
   static async CreateUser (user) {
-    // lorsqu'on crée l'utilisateur, on ne stocke pas directement son mot de passe
-    // en bases de données, mais on va le hasher
-    const hashedPassword = await bcrypt.hash(user.COIPassword, 10);
-    // lorsque le mot de passe a été transformé en une suite de symboles illisibles,
-    // on le stocke avec le reste en base de données
+    try{
+      // lorsqu'on crée l'utilisateur, on ne stocke pas directement son mot de passe
+      // en bases de données, mais on va le hasher
+      const hashedPassword = await bcrypt.hash(user.COIPassword, 10);
+      // lorsque le mot de passe a été transformé en une suite de symboles illisibles,
+      // on le stocke avec le reste en base de données
+      const result = await COI.pool.query({
+        text: `INSERT INTO ${User.tableName} (COIPrenom, COINom, COIPseudo, COIEmail, COIPassword)
+          VALUES ($1, $2, $3, $4, $5) RETURNING *`,
+        values: [user.COIPrenom, user.COINom, user.COIPseudo, user.COIEmail, hashedPassword]
+      });
 
-    const result = await COI.pool.query({
-      text: `INSERT INTO ${User.tableName} (COIPrenom, COINom, COIPseudo, COIEmail, COIPassword)
-        VALUES ($1, $2, $3, $4, $5) RETURNING *`,
-      values: [user.COIPrenom, user.COINom, user.COIPseudo, user.COIEmail, hashedPassword]
-    });
-
-    const userResult = result.rows[0];
-    delete userResult.coipassword; // on ne renvoie jamais le mot de passe de l'utilisateur
-    return userResult;
+      const userResult = result.rows[0];
+      delete userResult.coipassword; // on ne renvoie jamais le mot de passe de l'utilisateur
+      return userResult;
+    }catch(err){
+      console.log(err.code)
+      if (err.code === "23505"){
+        throw new Error("l'email  est déjà utilisé")
+      }
+      else {
+        throw err
+      }
+    }
   }
       
 }

@@ -88,7 +88,6 @@ export default {
                
       });
       
-      var data = JSON.stringify({"firstname":this.COINom,"lastname":this.COIPrenom, "pseudo":this.COIPseudo, "email":this.COIemail,"password":this.COIPassword});
 
      /* this.COINom = null;      
       this.COIPrenom = null;
@@ -97,23 +96,10 @@ export default {
       this.COIconfirmation =null;
       this.COIemail = null;  */
 
-      var xhr = new XMLHttpRequest();
-      xhr.withCredentials = true;
+      const requetes = require('../services/requetes.js');
+      requetes.createUser(this.COINom,this.COIPrenom, this.COIPseudo,this.COIemail,this.COIPassword);
 
-
-      var reponse;
-      xhr.addEventListener("readystatechange", function() {
-        if(this.readyState === 4) {
-          reponse = this.responseText;
-          console.log(this.responseText);
-        }
-      });
-
-      xhr.open("POST", "http://localhost:3002/api/createUser");
-      xhr.setRequestHeader("Content-Type", "application/json");
-
-      xhr.send(data);    
-      console.log("la reponse est " + reponse)
+      
 
         
       if  (this.verification) {       
