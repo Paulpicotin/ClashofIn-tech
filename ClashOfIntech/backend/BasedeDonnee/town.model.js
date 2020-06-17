@@ -20,12 +20,20 @@ class Town{
     return `
     CREATE TABLE ${Town.tableName} (
         id SERIAL PRIMARY KEY,
-        id_player SERIAL,
+        id_player INT,
         length INT, 
         width INT,
         townname TEXT
     )`
     
+  }
+
+  static async CreateTown(id_player, length = 10, width = 10, townname = "je n'ai pas de nom."){
+    const result = await COI.pool.query({
+        text: `INSERT INTO Town (id_player, length, width, townname) VALUES ($1, $2, $3, $4)`,
+        values: [id_player, length, width, townname]
+    })
+    return result.rows[0]
   }
   
 }

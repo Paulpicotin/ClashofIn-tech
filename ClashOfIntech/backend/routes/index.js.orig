@@ -19,8 +19,26 @@ async function isAuthenticated (req, res, next) {
     try{
       console.log(req.body);
 
+<<<<<<< HEAD
       //créer un nouvel admin 
       const user = { ...req.body};
+      await admin.CreateAdmin(user.firstname, user.lastname, user.pseudo, user.email, user.password);
+      console.log("Création de l'admin");
+      
+    
+      // renvoie au client de l'user
+      res.send({
+        firstname: user.firstname,
+        lastname: user.lastname,
+        speudo: user.speudo,
+        email: user.email,
+        password: user.password
+      });
+    }catch(err){
+      res.status(500).send(err.message)
+=======
+    //créer un nouvel admin 
+    const user = { ...req.body};
       var verif = await admin.VerifAdmin(user.pseudo);
       console.log("verif effectué")
       if (verif === undefined){
@@ -39,16 +57,12 @@ async function isAuthenticated (req, res, next) {
       else{
         res.send(false)
       }
-    }catch(err){
-      res.status(500).send(err.message)
-    }
     
   
     
   });
   
   router.post('/createUser', async (req, res) => {
-    try {
     console.log(req.body);
     //créer un nouvel admin 
     const user = { ...req.body};
@@ -62,24 +76,22 @@ async function isAuthenticated (req, res, next) {
     console.log("Création de l'user");
     console.log(result);
     //BuildCity(result.id);
-    
-      // renvoie au client de l'user
-      res.send({
-        firstname: user.firstname,
-        lastname: user.lastname,
-        pseudo: user.pseudo,
-        email: user.email,
-        password: user.password
-      });
-    }catch(err){
-      res.status(500).send(err.message)
-    }
+
+    // renvoie au client de l'user
+    res.send({
+      firstname: user.firstname,
+      lastname: user.lastname,
+      pseudo: user.pseudo,
+      email: user.email,
+      password: user.password
+    });
 
     async function BuildCity(id_User){
       const town = require('../BasedeDonnee/town.model.js');
       var res = town.CreateTown(id_User);
       console.log("creation de la ville")
       console.log(res);
+>>>>>>> dev
     }
   });
 

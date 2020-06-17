@@ -46,7 +46,7 @@ class User {
     // si c'est le même mot de passe, alors on retourne l'utilisateur
     if (isSame) {
       const user = result.rows[0];
-      delete user.COIPassword; // on ne doit jamais renvoyer le mot de passe de l'utilisateur
+      delete user.coipassword; // on ne doit jamais renvoyer le mot de passe de l'utilisateur
       return user;
     } else {
       // sinon, on retourne null
@@ -88,7 +88,7 @@ class User {
     });
 
     const userResult = result.rows[0];
-    delete userResult.password; // on ne renvoie jamais le mot de passe de l'utilisateur
+    delete userResult.coipassword; // on ne renvoie jamais le mot de passe de l'utilisateur
     return userResult;
   }
       

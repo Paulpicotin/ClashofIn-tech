@@ -37,6 +37,7 @@ class Admin  {
             values: [firsname, lastname, pseudo, email, password]
         })
         return result.rows[0]
+<<<<<<< HEAD
       }catch(err){
         console.log(err.code)
         if (err.code === "23505"){
@@ -46,7 +47,10 @@ class Admin  {
           throw err
         }
       }
+    }
+=======
       }
+>>>>>>> dev
       
       static async VerifAdmin(pseudoAd){
         const result = await COI.client.query({
