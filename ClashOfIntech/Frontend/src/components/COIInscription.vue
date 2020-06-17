@@ -83,16 +83,21 @@ export default {
       var xhr = new XMLHttpRequest();
       xhr.withCredentials = true;
 
+
+      var reponse;
       xhr.addEventListener("readystatechange", function() {
         if(this.readyState === 4) {
+          reponse = this.responseText;
           console.log(this.responseText);
         }
       });
 
-      xhr.open("POST", "http://localhost:3002/api/createAdmin");
+      xhr.open("POST", "http://localhost:3002/api/createUser");
       xhr.setRequestHeader("Content-Type", "application/json");
 
       xhr.send(data);
+      console.log("la reponse est " + reponse)
+
 
       this.$router.push('/village')       
    },

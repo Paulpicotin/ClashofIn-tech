@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 const uuidV4 = require('uuid').v4;
 const admin = require('../BasedeDonnee/admin.model.js');
+const users = require('../BasedeDonnee/user.model.js');
 
 
 
@@ -18,19 +19,61 @@ async function isAuthenticated (req, res, next) {
 
     //créer un nouvel admin 
     const user = { ...req.body};
-      await admin.CreateAdmin(user.firstname, user.lastname, user.pseudo, user.email, user.password);
-      console.log("Création de l'admin");
+      var verif = await admin.VerifAdmin(user.pseudo);
+      console.log("verif effectué")
+      if (verif === undefined){
+        await admin.CreateAdmin(user.firstname, user.lastname, user.pseudo, user.email, user.password);
+        console.log("Création de l'admin");
+
+        // renvoie au client de l'user
+        res.send({
+          firstname: user.firstname,
+          lastname: user.lastname,
+          pseudo: user.pseudo,
+          email: user.email,
+          password: user.password
+        });
+      }
+      else{
+        res.send(false)
+      }
     
   
+    
+  });
+  
+  router.post('/createUser', async (req, res) => {
+    console.log(req.body);
+    //créer un nouvel admin 
+    const user = { ...req.body};
+    const result = await users.CreateUser({
+      COIEmail: user.email,
+      COIPrenom: user.firstname,
+      COINom: user.lastname,
+      COIPseudo: user.pseudo,
+      COIPassword: user.password
+    });
+    console.log("Création de l'user");
+    console.log(result);
+    //BuildCity(result.id);
+
     // renvoie au client de l'user
     res.send({
       firstname: user.firstname,
       lastname: user.lastname,
-      speudo: user.speudo,
+      pseudo: user.pseudo,
       email: user.email,
       password: user.password
     });
+
+    async function BuildCity(id_User){
+      const town = require('../BasedeDonnee/town.model.js');
+      var res = town.CreateTown(id_User);
+      console.log("creation de la ville")
+      console.log(res);
+    }
   });
+
   
   /*router.get('/users', (req, res) => {
     console.log(req.params.id);

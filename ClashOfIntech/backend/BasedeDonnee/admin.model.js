@@ -36,8 +36,17 @@ class Admin  {
             values: [firsname, lastname, pseudo, email, password]
         })
         return result.rows[0]
-    }
+      }
       
+      static async VerifAdmin(pseudoAd){
+        const result = await COI.client.query({
+            text: `SELECT admin.pseudo as pseudo FROM ${Admin.tableName} as admin
+               WHERE admin.pseudo = $1 
+               LIMIT 1`,
+            values: [pseudoAd]
+        })
+        return result.rows[0]
+      }
 }
 /** @type {String} */
 Admin.tableName = 'admin'

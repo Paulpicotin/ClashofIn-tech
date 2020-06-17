@@ -1,0 +1,40 @@
+[
+  {
+    "name": "tonw",
+    "tableau": [
+      {
+        "id": 0,
+        "id_player": 0,
+        "length": 100, 
+        "width": 100,
+        "townname": "tonw"
+      }
+    ]
+  },
+  {
+    "name": "attack",
+    "tableau": [
+      {
+        "id": 0,                       
+        "name": "attack",
+        "life": 10,
+        "defensive_point": 10,
+        "offensive_point": 10, 
+        "attack_speed": 10,
+        "speed_move": 10,
+        "range": 10
+      }
+    ]
+  },
+  {
+    "name": "ressources_building",
+    "tableau":[
+      {
+        "id": 0,            
+        "id_building": 0,
+        "id_ressources": 0,            
+        "name": "i don't know"
+      }
+    ]
+  }
+]
