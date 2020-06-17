@@ -107,6 +107,10 @@ class Map{
 			}
 		}
 	};
+
+	draw (longueur, largeur){
+		return (longueur, largeur);
+	}
 }
 
 map1 = new Map(3,3);
