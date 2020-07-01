@@ -1,3 +1,4 @@
+const Clock = require("./Clock");
 
 class Game{
 
@@ -17,7 +18,7 @@ class Game{
 
     StartGame () {
     	var c = new Clock();
-    	c.StartClock(end);
+    	c.StartClock(this.end);
     };
 
     SetName (name){
@@ -36,7 +37,7 @@ class Game{
     };
 };
 
-test1 = new Game();
+var test1 = new Game();
 console.log(test1);
 test1.StartGame();    
     

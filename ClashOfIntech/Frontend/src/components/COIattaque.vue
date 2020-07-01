@@ -24,6 +24,12 @@ export default {
     },
     atack(){
 
+    },
+
+    soldier(){
+    },
+    ToAttack() {
+
     }
   }
 }

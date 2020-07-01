@@ -1,3 +1,4 @@
+const Square = require("./Square");
 
 class Soldier{
 
@@ -6,6 +7,7 @@ class Soldier{
 	defPoint;
 	deplacementSpeed;
 	attSpeed;
+	placement;
 
 	constructor (name, attack, defense, deplacement, attackSpeed){
 		this.attPoint = attack;
@@ -13,6 +15,7 @@ class Soldier{
 		this.defPoint = defense;
 		this.deplacementSpeed = deplacement;
 		this.attSpeed = attackSpeed;
+		this.placement = null;
 	};
 
 	GetNom (){
@@ -45,14 +48,23 @@ class Soldier{
 		}
 	};
 
-	ToDeplace (){
-	
-	};
+	ToPlace (long, lat){
+		this.placement = new Square(long, lat);
+	}
+
+	toShow (){
+		var soldierPicture = new Image();
+		soldierPicture.onload =function(){
+
+		}
+		soldierPicture.src = "";
+
+	}
 }
 
-soldat1 = new Soldier("Soldat1", 10, 10, 3, 1);
-soldat2 = new Soldier("Soldat2", 15, 10, 2, 0.5);
-soldat3 = new Soldier("Soldat3", 5, 5, 2, 2);
+var soldat1 = new Soldier("Soldat1", 10, 10, 3, 1);
+var soldat2 = new Soldier("Soldat2", 15, 10, 2, 0.5);
+var soldat3 = new Soldier("Soldat3", 5, 5, 2, 2);
 console.log(soldat1);
 console.log(soldat2);
 console.log(soldat3);

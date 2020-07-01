@@ -23,6 +23,6 @@ export default {
 }
 </script>
 
-<style scoped>
-  //dessinée map dedans
+<style scoped> 
+  
 </style>

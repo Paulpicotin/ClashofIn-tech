@@ -9,9 +9,9 @@ class Ressources{
     }
 
     addRessources(Clock){
-        if(Clock.start == tue){
+        if(Clock.start == true){
             while (Clock.passedTime != 0){
-                this.ressourcesCounter = this.ressourcesCounter + 50
+                this.ressourcesCounter = this.ressourcesCounter + 50;
             }
         }
     }

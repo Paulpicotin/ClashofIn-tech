@@ -90,7 +90,10 @@ export default {
     },
     createattaque(){
       this.$router.push('/attaque')
-    }             
+    },
+
+    buiding(){
+    }
   }
 }
 </script>
