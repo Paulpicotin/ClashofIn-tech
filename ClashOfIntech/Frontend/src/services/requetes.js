@@ -61,14 +61,15 @@ export function createAdmin (firstname, lastname, pseudo, email, password) {
  */
 export function createUser (firstname, lastname, pseudo, email, password) {
   // requête POST
-  return fetch(`${SERVER_URL}/api/createUser`, {
-    method: 'post',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ firstname, lastname, pseudo, email, password })
-  })
-    .then(resp => resp.json());
+    return fetch(`${SERVER_URL}/api/createUser`, {
+      method: 'post',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ firstname, lastname, pseudo, email, password })
+    })
+      .then(resp => resp.json())  
+      .catch(err => console.log(`Erreur avec le message : ${err}`));
 }
 
 /**

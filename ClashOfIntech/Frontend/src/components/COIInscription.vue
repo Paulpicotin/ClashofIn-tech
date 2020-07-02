@@ -97,8 +97,7 @@ export default {
       this.COIemail = null;  */
 
       const requetes = require('../services/requetes.js');
-      requetes.createUser(this.COINom,this.COIPrenom, this.COIPseudo,this.COIemail,this.COIPassword);
-
+      requetes.createUser(this.COINom,this.COIPrenom, this.COIPseudo,this.COIemail,this.COIPassword);      
       
 
         
