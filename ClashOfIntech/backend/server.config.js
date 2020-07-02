@@ -8,6 +8,6 @@ module.exports = {
     user: 'postgres',
     host: 'localhost',
     database: 'COI',
-    password: 'root'
+    password: 'root1234'
   }
 };

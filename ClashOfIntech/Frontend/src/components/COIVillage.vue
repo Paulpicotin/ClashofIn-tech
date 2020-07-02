@@ -1,5 +1,6 @@
 <template>
-  <div id="village">      
+  <div id="village">
+    <body background="../assets/fondvillage.png">      
     <nav class="ressources">
       <img src="../assets/ble.png" alt="corn" />
       <img src="../assets/gold.png" alt="gold" />
@@ -36,6 +37,7 @@
         <button v-for="batiment of batiments" :key="batiment.id">{{batiment.name}}</button>  
       </div>
     </nav>
+    </body>
   </div>
  
 </template>
@@ -52,7 +54,8 @@ export default {
       defenses:[
         {id: 0,name: 'douve'},
         {id: 1, name: 'tower'},
-        {id:2, name:'dongeon'}
+        {id:2, name:'dongeon'},
+        {id:3, name:'soldat'}
         
       ],
       batiments:[
@@ -77,7 +80,7 @@ export default {
       if (!this.lastButtonClicked) return {}
       const posFinal = this.lastButtonClicked.getBoundingClientRect()      
       return {
-        top: (posFinal.y - posFinal.height) + 'px',
+        top: (posFinal.y + posFinal.height) - 'px',
         left: posFinal.x + 'px'
       }
     },
@@ -155,5 +158,7 @@ input {
   width: 75px;
   height: 75px;
 }
+
+
 
 </style>
