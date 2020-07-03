@@ -51,6 +51,7 @@ export default {
       lastButtonClicked: null,
       idplayer: 0,
       pseudo: "null",
+      soldierNumber: 0,
       defenses:[
         {id: 0,name: 'douve'},
         {id: 1, name: 'tower'},
@@ -96,6 +97,11 @@ export default {
     },
 
     buiding(){
+    },
+
+    soldierCounter(){
+      this.soldierNumber ++;
+      console.log(this.soldierNumber);
     }
   }
 }
