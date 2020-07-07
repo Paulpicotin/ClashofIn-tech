@@ -11,7 +11,7 @@ class Game{
         this.name = this.SetName();
         this.owner = this.SetOwnerName();
         this.clock = new Clock();
-        this.end = 180;
+        this.end = 30;
     };
 
     const 
@@ -37,9 +37,11 @@ class Game{
     };
 };
 
-var test1 = new Game();
-console.log(test1);
-test1.StartGame();    
+/*var game1 = new Game();
+game1.name = "partie 1";
+game1.owner = "j'ai la Ref"
+console.log(game1);
+game1.StartGame(); */   
     
 module.exports = Game;
     

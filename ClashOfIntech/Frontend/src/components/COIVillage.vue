@@ -30,8 +30,8 @@
       <button class="bouton" v-on:click="createameliorer" >
         <img src="../assets/levelup.png" alt="levelup.png" />
       </button>
-      <div id="dropdown" v-show="showdefense" :style="styleDropdown()">
-        <button v-for="defense of defenses" :key="defense.id">{{defense.name}}</button>          
+      <div id="dropdown" v-show="showdefense" :style="styleDropdown()" >
+        <button  v-on:click="soldierCounter($event)" v-for="defense of defenses" :key="defense.id">{{defense.name}}  </button>          
       </div>
       <div id="batiment" v-show="showbatiment" :style="styleDropdown()">
         <button v-for="batiment of batiments" :key="batiment.id">{{batiment.name}}</button>  
@@ -56,7 +56,7 @@ export default {
         {id: 0,name: 'douve'},
         {id: 1, name: 'tower'},
         {id:2, name:'dongeon'},
-        {id:3, name:'soldat'}
+        {id:3, name:'soldat' }
         
       ],
       batiments:[
@@ -65,7 +65,7 @@ export default {
         {id:2, name: 'mine de fer'}
       ]      
     };
-  
+    
   },
   methods:{    
     updateLastButtonClicked(evt, param){
@@ -99,10 +99,13 @@ export default {
     buiding(){
     },
 
-    soldierCounter(){
-      this.soldierNumber ++;
-      console.log(this.soldierNumber);
-    }
+    soldierCounter(evt){
+        if(this.defenses.name == 'soldier'){
+          this.soldierNumber ++;
+          console.log(this.soldierNumber);
+        }
+        evt.target
+    },
   }
 }
 </script>

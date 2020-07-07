@@ -1,4 +1,5 @@
 const Square = require("./Square");
+const Building = require("../BasedeDonnee/building.model");
 
 class Soldier{
 
@@ -44,7 +45,7 @@ class Soldier{
 			console.log("Vous avez vaincu l'ennemi " + ennemies.GetNom());
 		}
 		else{
-			console.log("Il reste " + ennemies.GetDefensePoint() + " points de vie à l'énnemi " + ennemies.GetNom());
+			console.log("Il reste " + ennemies.GetDefensePoint() + " points de vie à l'ennemi " + ennemies.GetNom());
 		}
 	};
 
@@ -63,8 +64,14 @@ class Soldier{
 }
 
 var soldat1 = new Soldier("Soldat1", 10, 10, 3, 1);
+var square1 = new Square(1, 2);
+var square2 = new Square(1, 1);
+var square3 = new Square(1, 3);
+soldat1.ToPlace(square1.longitude, square1.latitude);
 var soldat2 = new Soldier("Soldat2", 15, 10, 2, 0.5);
+soldat2.ToPlace(square2.longitude, square2.latitude);
 var soldat3 = new Soldier("Soldat3", 5, 5, 2, 2);
+soldat3.ToPlace(square3.longitude, square3.latitude);
 console.log(soldat1);
 console.log(soldat2);
 console.log(soldat3);

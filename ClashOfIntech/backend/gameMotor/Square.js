@@ -18,8 +18,8 @@ class Square {
 	};
 
 };
-var  test1 = new Square(10, 5);
-console.log(test1);
+/*var  test1 = new Square(10, 5);
+console.log(test1);*/
 
 module.exports = Square;
 

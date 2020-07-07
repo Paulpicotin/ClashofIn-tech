@@ -1,3 +1,5 @@
+const Clock = require("./Clock");
+
 class Ressources{
 
     name;
@@ -22,5 +24,11 @@ class Ressources{
 
     
 }
+var ressources = new Ressources();
+var clock = new Clock();
+ressources.addRessources(clock);
+console.log(ressources);
+ressources.useRessources(25);
+console.log(ressources);
 
 module.exports = Ressources;

@@ -115,21 +115,22 @@ class Map{
 	}
 }
 
-var map1 = new Map(3,3);
+/*var map1 = new Map(2,3);
 console.log(map1);
-map1.createMap();
 map1.setWheatCounter(20);
-console.log(map1.getWheatCounter());
+console.log("blé: " + map1.getWheatCounter());
 map1.setGoldCounter(100);
-console.log(map1.getGoldCounter());
+console.log("or: " +map1.getGoldCounter());
 map1.setWaterCounter(50);
-console.log(map1.getWaterCounter());
+console.log("eau: " +map1.getWaterCounter());
 map1.setIronCounter(25);
-console.log(map1.getIronCounter());
+console.log("metal: " +map1.getIronCounter());
 map1.setWoodCounter(25);
-console.log(map1.getWoodCounter());
+console.log("bois: " + map1.getWoodCounter());
 var soldier = new Soldier("Soldat1", 10, 10, 3, 1);
-console.log(soldier);
+var square1 = new Square(1, 3);
+soldier.ToPlace(square1.longitude, square1.latitude);
+console.log(soldier);*/
 	
 module.exports = Map;	
 	

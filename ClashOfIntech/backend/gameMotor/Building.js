@@ -27,8 +27,10 @@ class Building {
 	}
 };
 
-var test1 = new Building("tour", 10, 20);
-console.log(test1);
+/*var batiment1 = new Building("tour", 10, 20);
+var square1 = new Square(10, 5);
+batiment1.BuildingPlacement(square1.longitude, square1.latitude)
+console.log(batiment1);*/
 
 
 module.exports = Building;

@@ -17,16 +17,12 @@ class Clock{
 		var timeStart = new Date();
 		while(this.start == true){
 			var timeStop = new Date();
-			//console.log (timeStop.getTime());
 			var passedTime = timeStop.getUTCSeconds() - timeStart.getUTCSeconds();
-			//console.log(passedTime);
 			if(passedTime != holdPassedTime){
 				time ++;
 				console.log(time);
 			}
 			holdPassedTime = passedTime;
-			//this.secondes = passedTime / 1000 ;
-			//console.log(this.secondes);
 			if(time == end){
 				this.start = false;
 			}
@@ -41,8 +37,8 @@ class Clock{
 
 }
 
-var test1 = new Clock();
-console.log(test1);
-test1.StartClock(180);
+/*var clock1 = new Clock();
+console.log(clock1);
+clock1.StartClock(30);*/
 	
 module.exports = Clock;
